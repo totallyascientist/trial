@@ -43,6 +43,28 @@ header .site-title {
   font-size: 18px;
 }
 
+text.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'F1';
+  font-size: 25px;
+  color: white;
+  white-space: nowrap; /* prevent wrapping */
+  pointer-events: none; /* clicks go through */
+}
+
+text.subtitle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: '0arame';
+  font-size: 10px;
+  color: white;
+  white-space: nowrap; /* prevent wrapping */
+  pointer-events: none; /* clicks go through */
+}
+
 #countdown {
   color:red;
   font-family:'F1';
@@ -242,6 +264,7 @@ footer .autograph {
   font-family: '0arame';
   font-size: 16px;
 }
+
 
 
 
