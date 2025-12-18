@@ -1,5 +1,6 @@
 @font-face { font-family:'F1'; src:url('fonts/Formula1_Bold.ttf'); }
 @font-face { font-family:'0arame'; src:url('fonts/0arame.ttf'); }
+@font-face {font-family: 'Integral'; src:url('../fonts/Integral.otf');}
 body { background:black; color:white; margin:0; font-family:Arial }
 
 header {
@@ -237,3 +238,4 @@ footer .autograph {
   font-family: '0arame';
   font-size: 16px;
 }
+
