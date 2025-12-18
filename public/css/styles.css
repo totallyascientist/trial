@@ -5,7 +5,7 @@
 
 @font-face {
   font-family: 'NeueHaas';
-  src: url('../fonts/NeueHaas.otf');
+  src: url('../fonts/NeueHaas.ttf');
 }
 
 @font-face {
@@ -34,6 +34,46 @@ a {
   text-decoration: none;
 }
 
+/* =========================
+   HEADER (RIGHT-ALIGNED)
+   ========================= */
+
+header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end; /* 🔹 SNAP TO RIGHT */
+  align-items: center;
+  padding: 20px 32px;
+  gap: 20px;
+}
+
+/* Optional logo sizing */
+header img {
+  height: 36px;
+  width: auto;
+}
+
+/* Social icons / menu inside header */
+header .socials {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+header .socials img {
+  height: 22px;
+  cursor: pointer;
+}
+
+header .menu {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* =========================
+   SECTIONS
+   ========================= */
+
 section {
   height: 100vh;
   position: relative;
@@ -52,6 +92,10 @@ section {
   justify-content: center;
 }
 
+/* =========================
+   BUTTON
+   ========================= */
+
 .btn {
   background: white;
   color: black;
@@ -62,77 +106,62 @@ section {
   border-radius: 12px;
 }
 
-.fly {
-  position: absolute;
-  width: 200px;
+/* =========================
+   FOOTER (FULLY CENTERED)
+   ========================= */
 
-}
-
-#siteHeader {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* ⬅️ CENTER EVERYTHING */
-  gap: 20px;
-  padding: 16px 0;
+footer {
   width: 100%;
-  box-sizing: border-box;
-}
-
-/* Logo */
-#siteHeader .logo {
-  height: 40px;
-}
-
-/* Social icons container */
-#siteHeader .socials {
-  display: flex;
-  gap: 14px;
-}
-
-/* Individual icons */
-#siteHeader .socials img {
-  height: 22px;
-  width: auto;
-  cursor: pointer;
-}
-
-/* Hamburger menu */
-#siteHeader .menu {
-  font-size: 26px;
-  cursor: pointer;
-}
-
-#siteFooter {
   display: flex;
   flex-direction: column;
-  align-items: center;   /* ⬅️ CENTER HORIZONTALLY */
+  align-items: center;      /* 🔹 CENTER HORIZONTALLY */
   justify-content: center;
-  gap: 16px;
+  gap: 18px;
   padding: 40px 0;
-  width: 100%;
   text-align: center;
 }
 
 /* Autograph image */
-#siteFooter .autograph {
+footer img {
   width: 180px;
   height: auto;
 }
 
 /* Social bar */
-#siteFooter .socials {
+footer .socials {
   display: flex;
-  gap: 16px;
+  gap: 18px;
+  justify-content: center;
 }
 
-#siteFooter .socials img {
+footer .socials img {
   height: 22px;
   cursor: pointer;
 }
 
 /* Contact link */
-#siteFooter a {
+footer a {
   font-family: '0arame';
-  color: white;
   text-decoration: underline;
+}
+
+/* =========================
+   CONTACT PAGE SUPPORT
+   ========================= */
+
+.contact {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  text-align: center;
+  padding: 40px;
+}
+
+.contact p {
+  font-family: '0arame';
+  font-size: 18px;
+  max-width: 600px;
 }
