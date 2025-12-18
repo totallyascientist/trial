@@ -39,26 +39,22 @@ a {
    ========================= */
 
 header {
-  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* logo left, other right if needed */
-  padding: 20px 32px;
-  position: relative;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: black;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* Logo left */
-header .logo {
-  display: flex;
-  align-items: center;
-}
-
-header .logo img {
-  height: 80px;
+.header-left .logo {
+  height: 100px; /* as requested */
   width: auto;
 }
 
-/* Large central header text */
 header .site-title {
   position: absolute;
   left: 50%;
@@ -70,21 +66,16 @@ header .site-title {
   pointer-events: none; /* clicks go through */
 }
 
-/* Socials / menu right */
-header .socials {
+.header-right nav {
   display: flex;
-  gap: 16px;
-  align-items: center;
+  gap: 30px;
 }
 
-header .socials img {
-  height: 22px;
-  cursor: pointer;
-}
-
-header .menu {
-  font-size: 28px;
-  cursor: pointer;
+.header-right nav a {
+  color: white;
+  text-decoration: none;
+  font-family: '0arame';
+  font-size: 18px;
 }
 
 
@@ -183,6 +174,7 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
 
 
 
