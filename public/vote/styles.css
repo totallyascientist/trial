@@ -2,6 +2,42 @@
 @font-face { font-family:'0arame'; src:url('fonts/0arame.ttf'); }
 body { background:black; color:white; margin:0; font-family:Arial }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: black;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left .logo {
+  height: 100px; /* as requested */
+  width: auto;
+}
+
+.header-center h1 {
+  font-family: 'Integral';
+  font-size: 40px;
+  text-align: center;
+  margin: 0;
+}
+
+.header-right nav {
+  display: flex;
+  gap: 30px;
+}
+
+.header-right nav a {
+  color: white;
+  text-decoration: none;
+  font-family: '0arame';
+  font-size: 18px;
+}
+
 #countdown {
   color:red;
   font-family:'F1';
@@ -170,120 +206,34 @@ body { background:black; color:white; margin:0; font-family:Arial }
 }
 
 
-/* =========================
-   HEADER (RIGHT-ALIGNED)
-   ========================= */
-
-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* logo left, other right if needed */
-  padding: 20px 32px;
-  position: relative;
-}
-
-/* Logo left */
-header .logo {
-  display: flex;
-  align-items: center;
-}
-
-header .logo img {
-  height: 100px;
-  width: auto;
-}
-
-/* Large central header text */
-header .site-title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Integral';
-  font-size: 45px;
-  color: white;
-  white-space: nowrap; /* prevent wrapping */
-  pointer-events: none; /* clicks go through */
-}
-
-/* Socials / menu right */
-header .socials {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-header .socials img {
-  height: 22px;
-  cursor: pointer;
-}
-
-header .menu {
-  font-size: 28px;
-  cursor: pointer;
-}
-
-/* =========================
-   FOOTER (FULLY CENTERED)
-   ========================= */
-
 footer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;      /* 🔹 CENTER HORIZONTALLY */
-  justify-content: center;
-  gap: 18px;
-  padding: 40px 0;
+  background: black;
+  color: white;
   text-align: center;
+  padding: 40px 20px;
 }
 
-/* Autograph image */
-footer img {
+footer .autograph {
   width: 180px;
-  height: auto;
+  margin-bottom: 20px;
 }
 
-/* Social bar */
-footer .socials {
+.footer-socials {
   display: flex;
-  gap: 18px;
   justify-content: center;
+  gap: 30px;
+  margin-bottom: 15px;
 }
 
-footer .socials img {
-  height: 22px;
-  cursor: pointer;
-}
-
-/* Contact link */
-footer a {
+.footer-socials a {
+  color: white;
+  text-decoration: none;
   font-family: '0arame';
+}
+
+.footer-contact a {
+  color: white;
   text-decoration: underline;
-}
-
-/* =========================
-   CONTACT PAGE SUPPORT
-   ========================= */
-
-.contact {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  text-align: center;
-  padding: 40px;
-}
-
-.contact p {
   font-family: '0arame';
-  font-size: 18px;
-  max-width: 600px;
+  font-size: 16px;
 }
-
-
-
-
-
