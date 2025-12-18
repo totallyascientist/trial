@@ -1,6 +1,6 @@
 @font-face { font-family:'F1'; src:url('fonts/Formula1_Bold.ttf'); }
 @font-face { font-family:'0arame'; src:url('fonts/0arame.ttf'); }
-
+@font-face {font-family: '0arame';src: url('../fonts/0arame.ttf');}
 body { background:black; color:white; margin:0; font-family:Arial }
 
 #countdown {
@@ -171,5 +171,117 @@ body { background:black; color:white; margin:0; font-family:Arial }
 }
 
 
+/* =========================
+   HEADER (RIGHT-ALIGNED)
+   ========================= */
+
+header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* logo left, other right if needed */
+  padding: 20px 32px;
+  position: relative;
+}
+
+/* Logo left */
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  height: 100px;
+  width: auto;
+}
+
+/* Large central header text */
+header .site-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Integral';
+  font-size: 45px;
+  color: white;
+  white-space: nowrap; /* prevent wrapping */
+  pointer-events: none; /* clicks go through */
+}
+
+/* Socials / menu right */
+header .socials {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+header .socials img {
+  height: 22px;
+  cursor: pointer;
+}
+
+header .menu {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* =========================
+   FOOTER (FULLY CENTERED)
+   ========================= */
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* 🔹 CENTER HORIZONTALLY */
+  justify-content: center;
+  gap: 18px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* Autograph image */
+footer img {
+  width: 180px;
+  height: auto;
+}
+
+/* Social bar */
+footer .socials {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+footer .socials img {
+  height: 22px;
+  cursor: pointer;
+}
+
+/* Contact link */
+footer a {
+  font-family: '0arame';
+  text-decoration: underline;
+}
+
+/* =========================
+   CONTACT PAGE SUPPORT
+   ========================= */
+
+.contact {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  text-align: center;
+  padding: 40px;
+}
+
+.contact p {
+  font-family: '0arame';
+  font-size: 18px;
+  max-width: 600px;
+}
 
 
