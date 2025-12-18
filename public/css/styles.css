@@ -41,20 +41,36 @@ a {
 header {
   width: 100%;
   display: flex;
-  justify-content: flex-end; /* 🔹 SNAP TO RIGHT */
   align-items: center;
+  justify-content: space-between; /* logo left, other right if needed */
   padding: 20px 32px;
-  gap: 20px;
+  position: relative;
 }
 
-/* Optional logo sizing */
-header img {
-  height: 80px;
+/* Logo left */
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  height: 36px;
   width: auto;
-  aligh-items: left;
 }
 
-/* Social icons / menu inside header */
+/* Large central header text */
+header .site-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Integral';
+  font-size: 60px;
+  color: white;
+  white-space: nowrap; /* prevent wrapping */
+  pointer-events: none; /* clicks go through */
+}
+
+/* Socials / menu right */
 header .socials {
   display: flex;
   gap: 16px;
@@ -70,6 +86,7 @@ header .menu {
   font-size: 28px;
   cursor: pointer;
 }
+
 
 /* =========================
    SECTIONS
@@ -166,4 +183,5 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
 
