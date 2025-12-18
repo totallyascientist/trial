@@ -21,10 +21,14 @@ header {
 }
 
 .header-center h1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'Integral';
   font-size: 40px;
-  text-align: center;
-  margin: 0;
+  color: white;
+  white-space: nowrap; /* prevent wrapping */
+  pointer-events: none; /* clicks go through */
 }
 
 .header-right nav {
@@ -238,4 +242,5 @@ footer .autograph {
   font-family: '0arame';
   font-size: 16px;
 }
+
 
