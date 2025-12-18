@@ -49,8 +49,9 @@ header {
 
 /* Optional logo sizing */
 header img {
-  height: 36px;
+  height: 80px;
   width: auto;
+  aligh-items: left;
 }
 
 /* Social icons / menu inside header */
@@ -165,3 +166,4 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
