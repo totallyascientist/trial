@@ -20,7 +20,7 @@ header {
   width: auto;
 }
 
-.header-center h1 {
+header .site-title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -242,5 +242,6 @@ footer .autograph {
   font-family: '0arame';
   font-size: 16px;
 }
+
 
 
