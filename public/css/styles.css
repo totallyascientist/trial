@@ -65,4 +65,74 @@ section {
 .fly {
   position: absolute;
   width: 200px;
+
+}
+
+#siteHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* ⬅️ CENTER EVERYTHING */
+  gap: 20px;
+  padding: 16px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Logo */
+#siteHeader .logo {
+  height: 40px;
+}
+
+/* Social icons container */
+#siteHeader .socials {
+  display: flex;
+  gap: 14px;
+}
+
+/* Individual icons */
+#siteHeader .socials img {
+  height: 22px;
+  width: auto;
+  cursor: pointer;
+}
+
+/* Hamburger menu */
+#siteHeader .menu {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+#siteFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ⬅️ CENTER HORIZONTALLY */
+  justify-content: center;
+  gap: 16px;
+  padding: 40px 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* Autograph image */
+#siteFooter .autograph {
+  width: 180px;
+  height: auto;
+}
+
+/* Social bar */
+#siteFooter .socials {
+  display: flex;
+  gap: 16px;
+}
+
+#siteFooter .socials img {
+  height: 22px;
+  cursor: pointer;
+}
+
+/* Contact link */
+#siteFooter a {
+  font-family: '0arame';
+  color: white;
+  text-decoration: underline;
 }
