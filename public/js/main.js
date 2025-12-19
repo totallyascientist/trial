@@ -5,27 +5,32 @@ window.addEventListener("scroll", () => {
   const rect = workSection.getBoundingClientRect();
   const windowH = window.innerHeight;
 
-  // Scroll progress: 0 → 1 → 2
-  let progress = (windowH - rect.top) / windowH;
-  progress = Math.max(0, Math.min(progress, 2));
+  // 🔹 Start ONLY after section fully enters viewport
+  if (rect.top > 0) {
+    images.forEach(img => img.style.opacity = 0);
+    return;
+  }
+
+  // Progress AFTER hero is gone
+  let progress = Math.abs(rect.top) / windowH;
+  progress = Math.max(0, Math.min(progress, 3));
 
   images.forEach((img, index) => {
-    const delay = index * 0.3; // stagger
-    const localProgress = Math.max(0, progress - delay);
+    const delay = index * 0.8;   // 🔹 MUCH larger delay
+    const local = progress - delay;
 
-    if (localProgress <= 0) {
+    if (local <= 0) {
       img.style.opacity = 0;
-      img.style.transform = img.dataset.baseTransform;
+      img.style.transform = `translateY(0)`;
       return;
     }
 
     img.style.opacity = 1;
 
-    const moveY = Math.min(localProgress * 300, 900);
-    img.style.transform = `translate(${img.dataset.x}, ${-50 - moveY}px)`;
+    const moveY = Math.min(local * 350, 1200);
+    img.style.transform = `translateY(-${moveY}px)`;
   });
 });
-
 
 
 
@@ -52,5 +57,6 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     }
   });
 });
+
 
 
