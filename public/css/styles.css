@@ -67,7 +67,7 @@ header .site-title {
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Integral';
-  font-size: 40px;
+  font-size: 30px;
   color: white;
   white-space: nowrap; /* prevent wrapping */
   pointer-events: none; /* clicks go through */
@@ -347,13 +347,14 @@ body {
   font-family: 'Integral';
   font-size: 25px;
   margin-bottom: 40px;
+  align-item: center;
 }
 
 .carousel {
   position: relative;
   max-width: 100%;
   overflow: hidden;
-  min-height: 880px; /* must be >= image height */
+  min-height: 1000px; /* must be >= image height */
 }
 
 .carousel-track {
@@ -511,6 +512,7 @@ body {
     padding: 0 40px;
   }
 }
+
 
 
 
