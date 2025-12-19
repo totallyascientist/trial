@@ -7,7 +7,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding:  20px 30px;
   background: black;
   color: white;
   position: sticky;
@@ -46,21 +46,21 @@ header .site-title {
 .vote-intro {
   width: 100%;
   text-align: center;
-  padding: 60px 20px 40px;
+  padding: 0px 20px 40px;
 }
 
 .vote-intro h2 {
-  font-family: 'Integral'; /* replace with F1 font if different */
-  font-size: 40px;
+  font-family: 'F1'; /* replace with F1 font if different */
+  font-size: 30px;
   color: white;
   margin-bottom: 18px;
 }
 
 .vote-intro p {
   font-family: '0arame';
-  font-size: 20px;
+  font-size: 15px;
   color: white;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   line-height: 1.5;
 }
@@ -263,6 +263,7 @@ footer .autograph {
   font-family: '0arame';
   font-size: 16px;
 }
+
 
 
 
