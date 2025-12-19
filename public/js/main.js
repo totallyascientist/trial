@@ -1,9 +1,55 @@
-window.addEventListener('scroll', () => {
-  document.querySelectorAll('.fly').forEach((img, i) => {
-    img.style.transform = `translateY(${-window.scrollY * (0.4 + i*0.2)}px)`;
-  });
+let hasAnimated = false;
 
-});
+const workSection = document.getElementById('work');
+const images = document.querySelectorAll('.fly');
+const aboutSection = document.getElementById('about-section');
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !hasAnimated) {
+        hasAnimated = true;
+        lockScroll();
+        animateImages();
+      }
+    });
+  },
+  { threshold: 0.6 }
+);
+
+observer.observe(workSection);
+
+function animateImages() {
+  // Image 1
+  images[0].classList.add('out');
+
+  // Image 2 (delay)
+  setTimeout(() => {
+    images[1].classList.add('out');
+  }, 400);
+
+  // Image 3 (delay)
+  setTimeout(() => {
+    images[2].classList.add('out');
+  }, 800);
+
+  // Reveal about section AFTER all animations
+  setTimeout(() => {
+    unlockScroll();
+    aboutSection.classList.remove('hidden');
+    aboutSection.scrollIntoView({ behavior: 'smooth' });
+  }, 1600);
+}
+
+/* Scroll lock helpers */
+function lockScroll() {
+  document.body.style.overflow = 'hidden';
+}
+
+function unlockScroll() {
+  document.body.style.overflow = '';
+}
+
 
 
 document.querySelectorAll('.carousel').forEach(carousel => {
@@ -29,3 +75,4 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     }
   });
 });
+
