@@ -110,53 +110,44 @@ section {
 /* =========================
    WORK SECTION
 ========================= */
-
-#work {
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
-
 .work-container {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-/* Base fly image */
-.fly {
-  position: absolute;
-  width: 220px;           /* comfortable size */
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
+#work {
+  position: relative;
+  height: 200vh; /* gives scroll room */
+  overflow: hidden;
+}
+
+#work .fly {
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  transition: transform 1.2s ease, opacity 1.2s ease;
+  width: 220px;              /* comfortable size */
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  opacity: 0;
+  transition: transform 0.05s linear;
 }
 
-/* Positioning */
-.fly-1 {
+/* positioning */
+#work .fly:nth-child(1) {
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
-.fly-2 {
-  left: 20%;
+#work .fly:nth-child(2) {
+  left: calc(50% - 260px);
+  z-index: 2;
 }
 
-.fly-3 {
-  right: 20%;
-}
-
-/* Flying state */
-.fly.out {
-  transform: translateY(-160vh);
-  opacity: 0;
-}
-
-/* Hidden until allowed */
-.hidden {
-  display: none;
+#work .fly:nth-child(3) {
+  left: calc(50% + 260px);
+  z-index: 1;
 }
 
 
@@ -390,3 +381,4 @@ body {
   height: 80px;
   object-fit: contain;
 }
+
