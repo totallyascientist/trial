@@ -219,6 +219,10 @@ body {
   line-height: 1.8;
 }
 
+.spacer{
+  height:15px;
+}
+
 /* =========================
    IMAGE GALLERY
    ========================= */
@@ -329,6 +333,7 @@ body {
   height: 80px;
   object-fit: contain;
 }
+
 
 
 
