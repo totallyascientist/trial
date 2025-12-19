@@ -468,7 +468,7 @@ body {
   /* TITLE */
   .site-title {
     font-size: clamp(18px, 5vw, 24px);
-    margin-top: 36px;
+    margin-top: 66px;
     margin-bottom: 14px;
     max-width: 100%;
   }
@@ -491,6 +491,7 @@ body {
     white-space: nowrap;
   }
 }
+
 
 
 
