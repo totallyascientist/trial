@@ -348,13 +348,15 @@ body {
   font-size: 25px;
   margin-bottom: 40px;
   align-item: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .carousel {
   position: relative;
   max-width: 100%;
   overflow: hidden;
-  min-height: 1000px; /* must be >= image height */
+  min-height: 2000px; /* must be >= image height */
 }
 
 .carousel-track {
@@ -471,6 +473,7 @@ body {
     font-size: 1px;   /* change this value */
     max-width: 90vw;   /* prevents overflow */
     text-align: center;
+    margin-top: 80px;
   }
 
   .about-section {
@@ -497,19 +500,6 @@ body {
   nav a {
     font-size: 12px;            /* scaled down */
     white-space: nowrap;
-  }
-}
-
-  .gallery-section {
-    padding: 40px 0;
-  }
-
-  .carousel {
-    min-height: 340px;
-  }
-
-  .carousel-track {
-    padding: 0 40px;
   }
 }
 
