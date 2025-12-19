@@ -124,14 +124,15 @@ section {
 
 #work .fly {
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 220px;              /* comfortable size */
+  bottom: -40%;                 /* start BELOW screen */
+  transform: translateY(0);
+  width: 260px;                 /* slightly larger */
   aspect-ratio: 1 / 1;
   object-fit: cover;
   opacity: 0;
-  transition: transform 0.05s linear;
+  transition: transform 0.05s linear, opacity 0.2s;
 }
+
 
 /* positioning */
 #work .fly:nth-child(1) {
@@ -148,6 +149,24 @@ section {
 #work .fly:nth-child(3) {
   left: calc(50% + 260px);
   z-index: 1;
+}
+
+.content-box {
+  background: rgba(0, 0, 0, 0.85);   /* black overlay */
+  padding: 40px 48px;
+  border-radius: 14px;
+  text-align: center;
+  max-width: 90vw;
+}
+
+/* Make text spacing nicer */
+.content-box h1 {
+  margin-bottom: 18px;
+}
+
+.content-box p {
+  margin-bottom: 26px;
+  font-family: 'NeueHaas', '0arame';
 }
 
 
@@ -381,4 +400,5 @@ body {
   height: 80px;
   object-fit: contain;
 }
+
 
