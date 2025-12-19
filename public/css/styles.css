@@ -214,8 +214,8 @@ body {
 }
 
 .about-text {
-  font-family: 'NeueHaas';
-  font-size: 15px;
+  font-family: '0arame';
+  font-size: 20px;
   line-height: 1.8;
 }
 
@@ -329,6 +329,7 @@ body {
   height: 80px;
   object-fit: contain;
 }
+
 
 
 
