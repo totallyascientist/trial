@@ -23,10 +23,12 @@ body {
   background: black;
   color: white;
   font-family: 'NeueHaas', '0arame', sans-serif;
+  align-items: center;
 }
 
 h1, h2, h3 {
   font-family: 'Integral';
+  align-items: center;
 }
 
 a {
@@ -174,6 +176,7 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
 
 
 
