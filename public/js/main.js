@@ -1,34 +1,37 @@
-const workSection = document.getElementById("work");
-const images = document.querySelectorAll("#work .fly");
+const hero = document.querySelector('.full-bg');
+const work = document.getElementById('work');
+const about = document.querySelectorAll('.full-bg')[1];
+const images = document.querySelectorAll('.fly');
 
-window.addEventListener("scroll", () => {
-  const rect = workSection.getBoundingClientRect();
-  const windowH = window.innerHeight;
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const vh = window.innerHeight;
 
-  // 🔹 Start ONLY after section fully enters viewport
-  if (rect.top > 0) {
+  const heroEnd = hero.offsetTop + hero.offsetHeight;
+  const aboutStart = about.offsetTop;
+
+  // OUTSIDE animation window
+  if (scrollY < heroEnd || scrollY > aboutStart) {
     images.forEach(img => img.style.opacity = 0);
     return;
   }
 
-  // Progress AFTER hero is gone
-  let progress = Math.abs(rect.top) / windowH;
-  progress = Math.max(0, Math.min(progress, 3));
+  // NORMALISED PROGRESS (0 → 1)
+  const progress = (scrollY - heroEnd) / (aboutStart - heroEnd);
 
   images.forEach((img, index) => {
-    const delay = index * 0.8;   // 🔹 MUCH larger delay
-    const local = progress - delay;
+    const delay = index * 0.25;       // STRONG stagger
+    const local = Math.max(0, Math.min(1, (progress - delay) / 0.5));
 
-    if (local <= 0) {
-      img.style.opacity = 0;
-      img.style.transform = `translateY(0)`;
-      return;
-    }
+    img.style.opacity = local > 0 ? 1 : 0;
 
-    img.style.opacity = 1;
+    const startY = vh * 0.9;          // bottom
+    const endY = -vh * 1.1;           // fully gone top
+    const y = startY + (endY - startY) * local;
 
-    const moveY = Math.min(local * 350, 1200);
-    img.style.transform = `translateY(-${moveY}px)`;
+    img.style.transform = img.classList.contains('fly-1')
+      ? `translate(-50%, ${y}px)`
+      : `translateY(${y}px)`;
   });
 });
 
@@ -57,6 +60,7 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     }
   });
 });
+
 
 
 
