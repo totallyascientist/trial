@@ -68,14 +68,14 @@ header .site-title {
 
 .header-right nav {
   display: flex;
-  gap: 30px;
+  gap: 100px;
 }
 
 .header-right nav a {
   color: white;
   text-decoration: none;
   font-family: '0arame';
-  font-size: 18px;
+  font-size: 24px;
 }
 
 /* =========================
@@ -173,6 +173,7 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
 
 
 
