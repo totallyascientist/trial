@@ -468,7 +468,7 @@ body {
     font-size: 1px;   /* change this value */
     max-width: 90vw;   /* prevents overflow */
     text-align: center;
-    margin-top: 80px;
+    margin-top: 70px;
   }
 
   .about-section {
@@ -476,7 +476,7 @@ body {
   }
 
   .gallery-section {
-    margin-top: 180px;
+    margin-top: 980px;
   }
 
   /* NAV CONTAINER */
@@ -497,6 +497,7 @@ body {
     white-space: nowrap;
   }
 }
+
 
 
 
