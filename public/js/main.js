@@ -1,54 +1,31 @@
-let hasAnimated = false;
+const workSection = document.getElementById("work");
+const images = document.querySelectorAll("#work .fly");
 
-const workSection = document.getElementById('work');
-const images = document.querySelectorAll('.fly');
-const aboutSection = document.getElementById('about-section');
+window.addEventListener("scroll", () => {
+  const rect = workSection.getBoundingClientRect();
+  const windowH = window.innerHeight;
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !hasAnimated) {
-        hasAnimated = true;
-        lockScroll();
-        animateImages();
-      }
-    });
-  },
-  { threshold: 0.6 }
-);
+  // Scroll progress: 0 → 1 → 2
+  let progress = (windowH - rect.top) / windowH;
+  progress = Math.max(0, Math.min(progress, 2));
 
-observer.observe(workSection);
+  images.forEach((img, index) => {
+    const delay = index * 0.3; // stagger
+    const localProgress = Math.max(0, progress - delay);
 
-function animateImages() {
-  // Image 1
-  images[0].classList.add('out');
+    if (localProgress <= 0) {
+      img.style.opacity = 0;
+      img.style.transform = img.dataset.baseTransform;
+      return;
+    }
 
-  // Image 2 (delay)
-  setTimeout(() => {
-    images[1].classList.add('out');
-  }, 400);
+    img.style.opacity = 1;
 
-  // Image 3 (delay)
-  setTimeout(() => {
-    images[2].classList.add('out');
-  }, 800);
+    const moveY = Math.min(localProgress * 300, 900);
+    img.style.transform = `translate(${img.dataset.x}, ${-50 - moveY}px)`;
+  });
+});
 
-  // Reveal about section AFTER all animations
-  setTimeout(() => {
-    unlockScroll();
-    aboutSection.classList.remove('hidden');
-    aboutSection.scrollIntoView({ behavior: 'smooth' });
-  }, 1600);
-}
-
-/* Scroll lock helpers */
-function lockScroll() {
-  document.body.style.overflow = 'hidden';
-}
-
-function unlockScroll() {
-  document.body.style.overflow = '';
-}
 
 
 
@@ -75,4 +52,5 @@ document.querySelectorAll('.carousel').forEach(carousel => {
     }
   });
 });
+
 
