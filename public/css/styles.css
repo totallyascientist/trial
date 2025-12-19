@@ -8,11 +8,9 @@
   src: url('../fonts/NeueHaas.ttf');
 }
 
-@font-face {
-  font-family: '0arame';
-  src: u@font-face {
-  font-family: 'Integral';
-  src: url('../fonts/Integral.otf');
+@font-face { 
+  font-family:'0arame'; 
+  src:url('fonts/0arame.ttf'); 
 }
 
 
@@ -45,7 +43,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 40px;
+  padding:  20px 30px;
   background: black;
   color: white;
   position: sticky;
@@ -71,17 +69,16 @@ header .site-title {
 
 .header-right nav {
   display: flex;
-  gap: 70px;
+  gap: 30px;
 }
 
-header nav a {
-  font-family: '0arame';
-  font-size: 18px;
+.header-right nav a {
   color: white;
   text-decoration: none;
-  line-height: 1;            /* prevents vertical weirdness */
-  white-space: nowrap;       /* prevents wrapping */
+  font-family: '0arame';
+  font-size: 18px;
 }
+
 
 
 /* =========================
@@ -356,6 +353,7 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
 
 
 
