@@ -193,7 +193,7 @@ body {
 .about-banner {
   width: 100%;
   height: 120px;
-  background: url('../images/about/banner.jpg') center / cover no-repeat;
+  background: url('../media/about-bg.png') center / cover no-repeat;
 }
 
 /* =========================
@@ -329,6 +329,7 @@ body {
   height: 80px;
   object-fit: contain;
 }
+
 
 
 
