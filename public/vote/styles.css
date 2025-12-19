@@ -43,28 +43,27 @@ header .site-title {
   font-size: 18px;
 }
 
-text.title {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'F1';
-  font-size: 25px;
-  color: white;
-  white-space: nowrap; /* prevent wrapping */
-  pointer-events: none; /* clicks go through */
+.vote-intro {
+  width: 100%;
+  text-align: center;
+  padding: 60px 20px 40px;
 }
 
-text.subtitle {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+.vote-intro h2 {
+  font-family: 'Integral'; /* replace with F1 font if different */
+  font-size: 40px;
+  color: white;
+  margin-bottom: 18px;
+}
+
+.vote-intro p {
   font-family: '0arame';
-  font-size: 10px;
+  font-size: 20px;
   color: white;
-  white-space: nowrap; /* prevent wrapping */
-  pointer-events: none; /* clicks go through */
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.5;
 }
-
 #countdown {
   color:red;
   font-family:'F1';
@@ -264,6 +263,7 @@ footer .autograph {
   font-family: '0arame';
   font-size: 16px;
 }
+
 
 
 
