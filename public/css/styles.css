@@ -71,12 +71,6 @@ header .site-title {
   gap: 40px;
 }
 
-.header-right {
-  display: flex;
-  justify-content: flex-end;
-  flex: 1;
-}
-
 header nav a {
   font-family: '0arame';
   font-size: 18px;
@@ -182,6 +176,7 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
 
 
 
