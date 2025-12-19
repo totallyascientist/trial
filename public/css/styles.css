@@ -470,17 +470,17 @@ body {
   }
 
   .site-title {
-    font-size: 22px;   /* change this value */
+    font-size: 14px;   /* change this value */
     max-width: 90vw;   /* prevents overflow */
     text-align: center;
   }
 
   .about-section {
-    margin-bottom: 60px;
+    margin-bottom: 180px;
   }
 
   .gallery-section {
-    margin-top: 60px;
+    margin-top: 180px;
   }
 
   /* NAV CONTAINER */
@@ -514,6 +514,7 @@ body {
     padding: 0 40px;
   }
 }
+
 
 
 
