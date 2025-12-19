@@ -71,12 +71,15 @@ header .site-title {
   gap: 30px;
 }
 
-.header-right nav a {
-  color: white;
-  text-decoration: none;
+header nav a {
   font-family: '0arame';
   font-size: 24px;
+  color: white;
+  text-decoration: none;
+  line-height: 1;            /* prevents vertical weirdness */
+  white-space: nowrap;       /* prevents wrapping */
 }
+
 
 /* =========================
    SECTIONS
@@ -173,6 +176,7 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
 
 
 
