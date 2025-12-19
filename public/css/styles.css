@@ -10,7 +10,187 @@
 
 @font-face {
   font-family: '0arame';
-  src: url('../fonts/0arame.ttf');
+  src: u@font-face {
+  font-family: 'Integral';
+  src: url('../fonts/Integral.otf');
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: 'NeueHaas', '0arame', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Integral';
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+/* =========================
+   HEADER (RIGHT-ALIGNED)
+   ========================= */
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: black;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left .logo {
+  height: 100px; /* as requested */
+  width: auto;
+}
+
+header .site-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Integral';
+  font-size: 40px;
+  color: white;
+  white-space: nowrap; /* prevent wrapping */
+  pointer-events: none; /* clicks go through */
+}
+
+.header-right nav {
+  display: flex;
+  gap: 70px;
+}
+
+header nav a {
+  font-family: '0arame';
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+  line-height: 1;            /* prevents vertical weirdness */
+  white-space: nowrap;       /* prevents wrapping */
+}
+
+
+/* =========================
+   SECTIONS
+   ========================= */
+
+section {
+  height: 100vh;
+  position: relative;
+}
+
+.full-bg {
+  background-size: cover;
+  background-position: center;
+}
+
+.center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   BUTTON
+   ========================= */
+
+.btn {
+  background: white;
+  color: black;
+  font-family: '0arame';
+  padding: 18px;
+  width: 33vw;
+  text-align: center;
+  border-radius: 12px;
+}
+
+/* =========================
+   FOOTER (FULLY CENTERED)
+   ========================= */
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* 🔹 CENTER HORIZONTALLY */
+  justify-content: center;
+  gap: 18px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* Autograph image */
+footer img {
+  width: 180px;
+  height: auto;
+}
+
+/* Social bar */
+footer .socials {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+
+footer .socials img {
+  height: 22px;
+  cursor: pointer;
+}
+
+/* Contact link */
+footer a {
+  font-family: '0arame';
+  text-decoration: underline;
+}
+
+/* =========================
+   CONTACT PAGE SUPPORT
+   ========================= */
+
+.contact {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  text-align: center;
+  padding: 40px;
+}
+
+.contact p {
+  font-family: '0arame';
+  font-size: 18px;
+  max-width: 600px;
+}
+
+
+
+
+
+
+
+
+
+
+
+rl('../fonts/0arame.ttf');
 }
 
 * {
@@ -176,6 +356,7 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
 
 
 
