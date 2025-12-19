@@ -447,13 +447,19 @@ body {
 
 
 
+
+/* ======================================================
+   🔥 MOBILE FIX — GUARANTEED OVERRIDE (PHONES)
+====================================================== */
+
 @media (max-width: 768px) {
 
+  /* HEADER STACKING */
   header {
     flex-direction: column;
     align-items: center;
     padding: 16px 20px;
-    gap: 12px;
+    gap: 14px;
   }
 
   .header-left,
@@ -463,15 +469,14 @@ body {
     justify-content: center;
   }
 
-  .header-left .logo {
-    height: 70px; /* scaled down */
+  .logo {
+    height: 70px;
   }
 
-  header .site-title {
-    position: static;      /* removes absolute centering */
+  .site-title {
+    position: static;
     transform: none;
     font-size: 28px;
-    text-align: center;
     pointer-events: auto;
   }
 
@@ -484,41 +489,37 @@ body {
   .header-right nav a {
     font-size: 16px;
   }
-}
 
-@media (max-width: 768px) {
-
+  /* HERO / TEXT */
   .center h1 {
-    font-size: 32px;
-    text-align: center;
+    font-size: 30px;
   }
 
   .center p {
     font-size: 16px;
-    text-align: center;
   }
-
-  .btn {
-    width: 85vw;        /* near full width */
-    max-width: 320px;
-    font-size: 16px;
-    padding: 14px;
-  }
-}
-
-@media (max-width: 768px) {
 
   .center > div {
-    padding: 20px;
     max-width: 90vw;
+    padding: 20px;
   }
-}
 
-@media (max-width: 768px) {
+  /* BUTTONS */
+  .btn {
+    width: 85vw;
+    max-width: 320px;
+    font-size: 16px;
+  }
 
+  /* WORK IMAGES */
+  #work img.fly {
+    width: 75vw;
+    max-width: 300px;
+  }
+
+  /* FOOTER */
   footer {
     padding: 30px 16px;
-    gap: 16px;
   }
 
   footer img {
@@ -527,21 +528,11 @@ body {
 
   footer .socials {
     flex-wrap: wrap;
+    justify-content: center;
     gap: 14px;
   }
 
   footer .socials img {
-    height: 26px; /* easier tap target */
-  }
-
-  footer a {
-    font-size: 16px;
+    height: 26px;
   }
 }
-
-
-
-
-
-
-
