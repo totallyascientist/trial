@@ -356,7 +356,7 @@ body {
   position: relative;
   max-width: 100%;
   overflow: hidden;
-  min-height: 380px; /* must be >= image height */
+  min-height: 880px; /* must be >= image height */
 }
 
 .carousel-track {
@@ -471,7 +471,7 @@ body {
 
   /* TITLE */
   .site-title {
-    font-size: clamp(8px, 5vw, 24px);
+    font-size: clamp(1px, 5vw, 14px);
     margin-top: 66px;
     margin-bottom: 14px;
     max-width: 100%;
@@ -508,6 +508,7 @@ body {
     padding: 0 40px;
   }
 }
+
 
 
 
