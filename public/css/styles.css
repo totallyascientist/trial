@@ -151,6 +151,13 @@ section {
   pointer-events: none;
 }
 
+.full-bg {
+  position: relative; /* REQUIRED for gradient overlays */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
 
 /* =========================
    WORK SECTION
@@ -431,6 +438,7 @@ body {
   height: 80px;
   object-fit: contain;
 }
+
 
 
 
