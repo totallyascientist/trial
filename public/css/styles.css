@@ -342,9 +342,6 @@ body {
   padding: 60px 0;
 }
 
-.gallery-section + .gallery-section {
-  padding-top: 20px; /* reduces gap between consecutive galleries */
-}
 
 .gallery-section h2 {
   font-family: 'Integral';
@@ -470,7 +467,7 @@ body {
   }
 
   .site-title {
-    font-size: 14px;   /* change this value */
+    font-size: 1px;   /* change this value */
     max-width: 90vw;   /* prevents overflow */
     text-align: center;
   }
@@ -514,6 +511,7 @@ body {
     padding: 0 40px;
   }
 }
+
 
 
 
