@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>About</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <title>About Me | totallyascientist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Global styles -->
+  <link rel="stylesheet" href="../styles.css">
+
+  <!-- About page styles -->
+  <link rel="stylesheet" href="about.css">
 </head>
 <body>
 
@@ -24,39 +31,66 @@
   </div>
 </header>
 
-<section>
-  <h1>About Me</h1>
-  <p>[Write freely here]</p>
-</section>
+<div class="about-banner"></div>
 
-<section>
-  <div class="gallery">
-    <img src="media/gallery/g1.jpg">
-    <img src="media/gallery/g2.jpg">
-    <img src="media/gallery/g3.jpg">
-  </div>
-</section>
+  <!-- ABOUT ME -->
+  <section class="about-section">
+    <h1>about me</h1>
 
-<section>
-  <h2>Partners</h2>
-  <img src="media/partners/p1.png">
-  <img src="media/partners/p2.png">
-  <p>Email: you@email.com</p>
-  <a href="/contact.html">Contact</a>
-</section>
+    <p class="about-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </section>
 
-<footer>
-  <img src="media/autograph.png" height="60">
-  <div>
-    <a href="https://instagram.com">Instagram</a> ·
-    <a href="https://tiktok.com">TikTok</a> ·
-    <a href="https://linktr.ee">Linktree</a>
-  </div>
-  <a href="/about.html">Contact Me</a>
-</footer>
+  <!-- IMAGE GALLERY -->
+  <section class="gallery-section">
+    <h2>image gallery</h2>
 
+    <div class="carousel">
+      <button class="carousel-btn left" id="prevBtn">&#10094;</button>
 
+      <div class="carousel-track">
+        <img src="/media/about/gallery1.jpg">
+        <img src="/media/about/gallery2.jpg">
+        <img src="/media/about/gallery3.jpg">
+        <img src="/media/about/gallery4.jpg">
+        <img src="/media/about/gallery5.jpg">
+        <img src="/media/about/gallery6.jpg">
+        <img src="/media/about/gallery7.jpg">
+      </div>
+
+      <button class="carousel-btn right" id="nextBtn">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- CHANNEL STATISTICS -->
+  <section class="stats-section">
+    <h2>channel statistics</h2>
+
+    <p class="stats-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="partners-section">
+    <h2>partners</h2>
+
+    <p class="partners-text">
+      list of partners I have worked with/currently working with
+    </p>
+
+    <div class="partners-logos">
+      <img src="/media/partners/p1.png">
+      <img src="/media/partners/p2.png">
+    </div>
+  </section>
+
+  <script src="main.js"></script>
 </body>
 </html>
+
 
 
