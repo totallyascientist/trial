@@ -103,6 +103,10 @@ section {
   justify-content: center;
 }
 
+.centered-content {
+  text-align: center;
+}
+
 /* =========================
    BUTTON
    ========================= */
@@ -333,6 +337,7 @@ body {
   height: 80px;
   object-fit: contain;
 }
+
 
 
 
