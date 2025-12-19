@@ -339,8 +339,11 @@ body {
    ========================= */
 
 .gallery-section {
-  padding: 80px 0;
-  text-align: center;
+  padding: 60px 0;
+}
+
+.gallery-section + .gallery-section {
+  padding-top: 20px; /* reduces gap between consecutive galleries */
 }
 
 .gallery-section h2 {
@@ -353,6 +356,7 @@ body {
   position: relative;
   max-width: 100%;
   overflow: hidden;
+  min-height: 380px; /* must be >= image height */
 }
 
 .carousel-track {
@@ -467,7 +471,7 @@ body {
 
   /* TITLE */
   .site-title {
-    font-size: clamp(14px, 5vw, 20px);
+    font-size: clamp(8px, 5vw, 24px);
     margin-top: 66px;
     margin-bottom: 14px;
     max-width: 100%;
@@ -491,6 +495,20 @@ body {
     white-space: nowrap;
   }
 }
+
+  .gallery-section {
+    padding: 40px 0;
+  }
+
+  .carousel {
+    min-height: 340px;
+  }
+
+  .carousel-track {
+    padding: 0 40px;
+  }
+}
+
 
 
 
