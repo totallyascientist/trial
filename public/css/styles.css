@@ -220,7 +220,7 @@ body {
 }
 
 .spacer{
-  height:15px;
+  height:30px;
 }
 
 /* =========================
@@ -333,6 +333,7 @@ body {
   height: 80px;
   object-fit: contain;
 }
+
 
 
 
