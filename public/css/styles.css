@@ -68,7 +68,7 @@ header .site-title {
 
 .header-right nav {
   display: flex;
-  gap: 70px;
+  gap: 40px;
 }
 
 .header-right {
@@ -182,6 +182,7 @@ footer a {
   font-size: 18px;
   max-width: 600px;
 }
+
 
 
 
