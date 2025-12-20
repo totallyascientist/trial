@@ -18,14 +18,6 @@ html, body {
   overflow-x: hidden;
 }
 
-:root {
-  --space-xs: 16px;
-  --space-sm: 32px;
-  --space-md: 64px;
-  --space-lg: 96px;
-  --space-xl: 140px;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -101,7 +93,6 @@ header .site-title {
 
 section {
   height: 100vh;
-  width: 100%
   position: relative;
 }
 
@@ -321,14 +312,11 @@ body {
    ========================= */
 
 .about-section {
-  padding: var(--space-xl) var(--space-sm);
-  margin-bottom: var(--space-lg);
+  padding: 80px 20px;
   text-align: center;
   max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
 }
-
 
 .about-section h1 {
   font-family: 'Integral';
@@ -351,10 +339,10 @@ body {
    ========================= */
 
 .gallery-section {
-  padding: var(--space-lg) 0;
-  margin: 0;              /* critical */
+  padding: 80px 0;
   text-align: center;
 }
+
 .gallery-section h2 {
   font-family: 'Integral';
   font-size: 25px;
@@ -363,15 +351,15 @@ body {
 
 .carousel {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
   overflow: hidden;
 }
 
 .carousel-track {
   display: flex;
   gap: 20px;
-  padding: 0 var(--space-md);
+  transition: transform 0.4s ease;
+  padding: 0 80px;
 }
 
 .carousel-track img {
@@ -484,21 +472,15 @@ body {
   }
 
   .about-section {
-    padding: var(--space-lg) var(--space-sm);
+    margin-bottom: 180px;
   }
 
   .gallery-section {
-    padding: var(--space-md) 0;
+    margin-top: 600px;
   }
 
-  .carousel-track {
-    padding: 0 var(--space-sm);
-  }
-
-  .carousel-track img {
-    width: 220px;
-    height: 275px; /* still 4:5 */
-  }
+  .gallery-section:nth-of-type(2) {
+  margin-top: 10px;
 }
 
   /* NAV CONTAINER */
@@ -519,8 +501,6 @@ body {
     white-space: nowrap;
   }
 }
-
-
 
 
 
