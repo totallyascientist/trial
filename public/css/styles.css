@@ -92,7 +92,6 @@ header .site-title {
    ========================= */
 
 section {
-  height: 100vh;
   position: relative;
 }
 
@@ -471,10 +470,6 @@ body {
     margin-top: 70px;
   }
 
-  .about-section {
-    padding-bottom: 180px;
-  }
-
   /* NAV CONTAINER */
   .header-right {
     width: 100%;
@@ -493,6 +488,7 @@ body {
     white-space: nowrap;
   }
 }
+
 
 
 
