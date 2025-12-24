@@ -42,14 +42,12 @@ function renderCountdown() {
   const m = Math.floor(t / 60000) % 60;
   const s = Math.floor(t / 1000) % 60;
 
-  const html = `
+  countdown.innerHTML = `
     <span class="countdown-unit"><div class="countdown-value">${d}</div><div class="countdown-label">days</div></span> :
     <span class="countdown-unit"><div class="countdown-value">${h}</div><div class="countdown-label">hours</div></span> :
     <span class="countdown-unit"><div class="countdown-value">${m}</div><div class="countdown-label">minutes</div></span> :
     <span class="countdown-unit"><div class="countdown-value">${s}</div><div class="countdown-label">seconds</div></span>
   `;
-
-  countdown.innerHTML = html;
 }
 
 setInterval(renderCountdown, 1000);
@@ -58,9 +56,7 @@ renderCountdown();
 const towerCountdownEl = document.getElementById('towerCountdownSimple');
 
 function updateTowerCountdown() {
-  const now = new Date();
-  let diff = TOWER_END - now;
-
+  const diff = TOWER_END - new Date();
   if (diff <= 0) {
     towerCountdownEl.textContent = 'VOTING CLOSED';
     return;
@@ -80,14 +76,11 @@ function updateTowerCountdown() {
       <span>${minutes}</span><span class="label">minutes</span> :
       <span>${seconds}</span><span class="label">seconds</span>
     </div>
-`;
-
+  `;
 }
 
 updateTowerCountdown();
 setInterval(updateTowerCountdown, 1000);
-
-
 
 /* VOTE */
 document.getElementById('voteBtn').onclick = async () => {
@@ -108,9 +101,7 @@ shareBtn.onclick = async () => {
   if (!selected) return;
 
   const imageUrl = `media/completion-photos/${selected}.png`;
-  const response = await fetch(imageUrl);
-  const blob = await response.blob();
-
+  const blob = await (await fetch(imageUrl)).blob();
   const file = new File([blob], `${selected}.png`, { type: blob.type });
 
   if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -124,7 +115,6 @@ shareBtn.onclick = async () => {
   }
 };
 
-
 function closeOverlay() {
   document.getElementById('overlay').style.display = 'none';
 }
@@ -132,23 +122,43 @@ function closeOverlay() {
 /* TOWER */
 async function loadStats() {
   const res = await fetch('/stats', { cache: 'no-store' });
-  const votes = await res.json();
-  renderTower(votes);
+  const rawVotes = await res.json();
+  renderTower(rawVotes);
 }
 
 function renderTower(votes) {
   towerData.innerHTML = '';
 
-  let entries = Object.entries(votes);
+  /* --- LOG SCALING START (NEW) --- */
+
+  const logVotes = {};
+  let totalLog = 0;
+
+  for (const [driver, count] of Object.entries(votes)) {
+    const lv = Math.log(count + 1);   // +1 prevents log(0)
+    logVotes[driver] = lv;
+    totalLog += lv;
+  }
+
+  const percentages = {};
+  for (const driver in logVotes) {
+    percentages[driver] = totalLog === 0
+      ? 0
+      : (logVotes[driver] / totalLog) * 100;
+  }
+
+  let entries = Object.entries(percentages);
+
+  /* --- LOG SCALING END --- */
 
   const allZero = entries.every(e => e[1] === 0);
   if (allZero) entries.sort(() => Math.random() - 0.5);
-  else entries.sort((a,b) => b[1] - a[1]);
+  else entries.sort((a, b) => b[1] - a[1]);
 
-  entries.forEach((e,i) => {
+  entries.forEach((e, i) => {
     const row = document.createElement('div');
     row.className = 'towerRow';
-    row.style.top = `${142+ i * 54.6}px`;
+    row.style.top = `${142 + i * 54.6}px`;
     row.innerHTML = `
       <img src="media/driver-names/${e[0]}.png">
       <span>${e[1].toFixed(2)}%</span>
@@ -159,20 +169,3 @@ function renderTower(votes) {
 
 loadStats();
 setInterval(loadStats, 3000);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
