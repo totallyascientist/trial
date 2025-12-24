@@ -100,11 +100,11 @@ document.getElementById('voteBtn').onclick = async () => {
 shareBtn.onclick = async () => {
   if (!selected) return;
 
-  const imageUrl = `media/completion-photos/${selected}.png`;
-  const blob = await (await fetch(imageUrl)).blob();
+  const response = await fetch(`media/completion-photos/${selected}.png`);
+  const blob = await response.blob();
   const file = new File([blob], `${selected}.png`, { type: blob.type });
 
-  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+  if (navigator.canShare?.({ files: [file] })) {
     await navigator.share({
       files: [file],
       text: `I voted for ${selected}! Vote now at totallyascientist.com/vote`,
@@ -122,46 +122,34 @@ function closeOverlay() {
 /* TOWER */
 async function loadStats() {
   const res = await fetch('/stats', { cache: 'no-store' });
-  const rawVotes = await res.json();
-  renderTower(rawVotes);
+  const votes = await res.json();
+  renderTower(votes);
 }
 
+/* =========================
+   LOG-SCALED RENDER (ONLY CHANGE)
+   ========================= */
 function renderTower(votes) {
   towerData.innerHTML = '';
 
-  /* --- LOG SCALING START (NEW) --- */
+  const entries = Object.entries(votes);
 
-  const logVotes = {};
-  let totalLog = 0;
+  // Sort by RAW votes (fair ranking)
+  entries.sort((a, b) => b[1] - a[1]);
 
-  for (const [driver, count] of Object.entries(votes)) {
-    const lv = Math.log(count + 1);   // +1 prevents log(0)
-    logVotes[driver] = lv;
-    totalLog += lv;
-  }
-
-  const percentages = {};
-  for (const driver in logVotes) {
-    percentages[driver] = totalLog === 0
-      ? 0
-      : (logVotes[driver] / totalLog) * 100;
-  }
-
-  let entries = Object.entries(percentages);
-
-  /* --- LOG SCALING END --- */
-
-  const allZero = entries.every(e => e[1] === 0);
-  if (allZero) entries.sort(() => Math.random() - 0.5);
-  else entries.sort((a, b) => b[1] - a[1]);
+  // Log-scale values for display
+  const logValues = entries.map(e => Math.log(e[1] + 1));
+  const logTotal = logValues.reduce((a, b) => a + b, 0) || 1;
 
   entries.forEach((e, i) => {
+    const logPercent = (Math.log(e[1] + 1) / logTotal) * 100;
+
     const row = document.createElement('div');
     row.className = 'towerRow';
     row.style.top = `${142 + i * 54.6}px`;
     row.innerHTML = `
       <img src="media/driver-names/${e[0]}.png">
-      <span>${e[1].toFixed(2)}%</span>
+      <span>${logPercent.toFixed(2)}%</span>
     `;
     towerData.appendChild(row);
   });
