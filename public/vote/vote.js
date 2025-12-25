@@ -124,58 +124,50 @@ shareBtn.onclick = async () => {
   }
 };
 
-
-function closeOverlay() {
-  document.getElementById('overlay').style.display = 'none';
-}
 function renderTower(votes) {
   towerData.innerHTML = '';
 
   let entries = Object.entries(votes);
 
-  const totalVotes = entries.reduce((sum, e) => sum + e[1], 0);
+  // Guard: if nothing valid, do not break UI
+  if (!entries.length) return;
 
-  // Safety: no votes yet
-  if (totalVotes === 0) {
-    entries.sort(() => Math.random() - 0.5);
-    entries.forEach((e, i) => {
-      const row = document.createElement('div');
-      row.className = 'towerRow';
-      row.style.top = `${142 + i * 54.6}px`;
-      row.innerHTML = `
-        <img src="media/driver-names/${e[0]}.png">
-        <span>0.00%</span>
-      `;
-      towerData.appendChild(row);
-    });
-    return;
-  }
+  /* -----------------------------------
+     LOG-SCALED VISUAL REWEIGHTING
+     ----------------------------------- */
 
-  /* -----------------------------
-     HYBRID LOG + FLOOR SYSTEM
-     ----------------------------- */
-
-  // Log-scaled values
-  const scaled = entries.map(([name, count]) => ({
-    name,
-    raw: count,
-    log: Math.log(count + 1)
-  }));
-
-  const totalLog = scaled.reduce((s, e) => s + e.log, 0);
-
-  // Minimum visible impact per vote
-  const FLOOR = 0.01 / totalVotes;
-
-  // Compute displayed percentage
-  scaled.forEach(e => {
-    const basePercent = (e.log / totalLog) * 100;
-    const floorPercent = e.raw * FLOOR;
-    e.percent = Math.max(basePercent, floorPercent);
+  // Convert percentages → log space
+  const scaled = entries.map(([name, percent]) => {
+    const safePercent = Math.max(percent, 0.0001); // prevent log(0)
+    return {
+      name,
+      raw: percent,
+      log: Math.log(safePercent)
+    };
   });
 
-  // Sort by displayed percentage
-  scaled.sort((a, b) => b.percent - a.percent);
+  const minLog = Math.min(...scaled.map(e => e.log));
+
+  // Normalize + amplify
+  scaled.forEach(e => {
+    const normalized = e.log - minLog + 1;
+    e.display = normalized;
+  });
+
+  const totalDisplay = scaled.reduce((s, e) => s + e.display, 0);
+
+  // Convert back to percentage space
+  scaled.forEach(e => {
+    let p = (e.display / totalDisplay) * 100;
+
+    // FLOOR: ensure visible movement
+    if (p < 0.01 && e.raw > 0) p = 0.01;
+
+    e.final = p;
+  });
+
+  // Sort by visual dominance
+  scaled.sort((a, b) => b.final - a.final);
 
   // Render
   scaled.forEach((e, i) => {
@@ -184,7 +176,7 @@ function renderTower(votes) {
     row.style.top = `${142 + i * 54.6}px`;
     row.innerHTML = `
       <img src="media/driver-names/${e.name}.png">
-      <span>${e.percent.toFixed(2)}%</span>
+      <span>${e.final.toFixed(2)}%</span>
     `;
     towerData.appendChild(row);
   });
@@ -192,6 +184,7 @@ function renderTower(votes) {
 
 loadStats();
 setInterval(loadStats, 3000);
+
 
 
 
