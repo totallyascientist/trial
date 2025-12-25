@@ -128,37 +128,56 @@ shareBtn.onclick = async () => {
 function closeOverlay() {
   document.getElementById('overlay').style.display = 'none';
 }
-
-/* TOWER */
 function renderTower(votes) {
   towerData.innerHTML = '';
 
-  const entries = Object.entries(votes);
+  let entries = Object.entries(votes);
 
-  const totalVotes = entries.reduce((s, e) => s + e[1], 0);
-  const FLOOR = totalVotes > 0 ? 0.01 / totalVotes : 0;
+  const totalVotes = entries.reduce((sum, e) => sum + e[1], 0);
 
-  // 1️⃣ Log scale
+  // Safety: no votes yet
+  if (totalVotes === 0) {
+    entries.sort(() => Math.random() - 0.5);
+    entries.forEach((e, i) => {
+      const row = document.createElement('div');
+      row.className = 'towerRow';
+      row.style.top = `${142 + i * 54.6}px`;
+      row.innerHTML = `
+        <img src="media/driver-names/${e[0]}.png">
+        <span>0.00%</span>
+      `;
+      towerData.appendChild(row);
+    });
+    return;
+  }
+
+  /* -----------------------------
+     HYBRID LOG + FLOOR SYSTEM
+     ----------------------------- */
+
+  // Log-scaled values
   const scaled = entries.map(([name, count]) => ({
     name,
     raw: count,
-    scaled: Math.log(count + 1)
+    log: Math.log(count + 1)
   }));
 
-  // 2️⃣ Total scaled
-  const totalScaled = scaled.reduce((s, e) => s + e.scaled, 0);
+  const totalLog = scaled.reduce((s, e) => s + e.log, 0);
 
-  // 3️⃣ Compute percentage with floor
+  // Minimum visible impact per vote
+  const FLOOR = 0.01 / totalVotes;
+
+  // Compute displayed percentage
   scaled.forEach(e => {
-    const basePercent = totalScaled === 0 ? 0 : (e.scaled / totalScaled) * 100;
+    const basePercent = (e.log / totalLog) * 100;
     const floorPercent = e.raw * FLOOR;
     e.percent = Math.max(basePercent, floorPercent);
   });
 
-  // 4️⃣ Sort by displayed percent
+  // Sort by displayed percentage
   scaled.sort((a, b) => b.percent - a.percent);
 
-  // 5️⃣ Render
+  // Render
   scaled.forEach((e, i) => {
     const row = document.createElement('div');
     row.className = 'towerRow';
@@ -171,9 +190,9 @@ function renderTower(votes) {
   });
 }
 
-
 loadStats();
 setInterval(loadStats, 3000);
+
 
 
 
