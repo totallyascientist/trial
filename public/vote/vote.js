@@ -130,25 +130,37 @@ function closeOverlay() {
 }
 
 /* TOWER */
-async function loadStats() {
-  const res = await fetch('/stats', { cache: 'no-store' });
-  const votes = await res.json();
-  renderTower(votes);
-}
-
-function renderTower(votes) {
+async function renderTower(votes) {
   towerData.innerHTML = '';
 
-  let entries = Object.entries(votes);
+  const entries = Object.entries(votes);
 
-  const allZero = entries.every(e => e[1] === 0);
-  if (allZero) entries.sort(() => Math.random() - 0.5);
-  else entries.sort((a,b) => b[1] - a[1]);
+  // ---- LOGARITHMIC SCALING ----
+  const scaled = entries.map(([name, count]) => {
+    return [name, Math.log(count + 1)];
+  });
 
-  entries.forEach((e,i) => {
+  const totalScaled = scaled.reduce((sum, e) => sum + e[1], 0);
+
+  // Convert to percentages, round UP to guarantee visible movement
+  const percentages = scaled.map(([name, value]) => {
+    let pct = (value / totalScaled) * 100;
+
+    // Floor visible movement to 0.01%
+    pct = Math.ceil(pct * 100) / 100;
+
+    return [name, pct];
+  });
+
+  // Sorting (unchanged behavior)
+  const allZero = percentages.every(e => e[1] === 0);
+  if (allZero) percentages.sort(() => Math.random() - 0.5);
+  else percentages.sort((a, b) => b[1] - a[1]);
+
+  percentages.forEach((e, i) => {
     const row = document.createElement('div');
     row.className = 'towerRow';
-    row.style.top = `${142+ i * 54.6}px`;
+    row.style.top = `${142 + i * 54.6}px`;
     row.innerHTML = `
       <img src="media/driver-names/${e[0]}.png">
       <span>${e[1].toFixed(2)}%</span>
@@ -156,9 +168,9 @@ function renderTower(votes) {
     towerData.appendChild(row);
   });
 }
-
 loadStats();
 setInterval(loadStats, 3000);
+
 
 
 
