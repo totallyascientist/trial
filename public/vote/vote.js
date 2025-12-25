@@ -127,63 +127,46 @@ shareBtn.onclick = async () => {
 function renderTower(votes) {
   towerData.innerHTML = '';
 
-  let entries = Object.entries(votes);
+  const entries = Object.entries(votes);
 
-  // Guard: if nothing valid, do not break UI
-  if (!entries.length) return;
-
-  /* -----------------------------------
-     LOG-SCALED VISUAL REWEIGHTING
-     ----------------------------------- */
-
-  // Convert percentages → log space
-  const scaled = entries.map(([name, percent]) => {
-    const safePercent = Math.max(percent, 0.0001); // prevent log(0)
-    return {
-      name,
-      raw: percent,
-      log: Math.log(safePercent)
-    };
+  // ---- LOGARITHMIC SCALING ----
+  const scaled = entries.map(([name, count]) => {
+    return [name, Math.log(count + 1)];
   });
 
-  const minLog = Math.min(...scaled.map(e => e.log));
+  const totalScaled = scaled.reduce((sum, e) => sum + e[1], 0);
 
-  // Normalize + amplify
-  scaled.forEach(e => {
-    const normalized = e.log - minLog + 1;
-    e.display = normalized;
+  // Convert to percentages, round UP to guarantee visible movement
+  const percentages = scaled.map(([name, value]) => {
+    let pct = (value / totalScaled) * 100;
+
+    // Floor visible movement to 0.01%
+    pct = Math.ceil(pct * 100) / 100;
+
+    return [name, pct];
   });
 
-  const totalDisplay = scaled.reduce((s, e) => s + e.display, 0);
+  // Sorting (unchanged behavior)
+  const allZero = percentages.every(e => e[1] === 0);
+  if (allZero) percentages.sort(() => Math.random() - 0.5);
+  else percentages.sort((a, b) => b[1] - a[1]);
 
-  // Convert back to percentage space
-  scaled.forEach(e => {
-    let p = (e.display / totalDisplay) * 100;
-
-    // FLOOR: ensure visible movement
-    if (p < 0.01 && e.raw > 0) p = 0.01;
-
-    e.final = p;
-  });
-
-  // Sort by visual dominance
-  scaled.sort((a, b) => b.final - a.final);
-
-  // Render
-  scaled.forEach((e, i) => {
+  percentages.forEach((e, i) => {
     const row = document.createElement('div');
     row.className = 'towerRow';
     row.style.top = `${142 + i * 54.6}px`;
     row.innerHTML = `
-      <img src="media/driver-names/${e.name}.png">
-      <span>${e.final.toFixed(2)}%</span>
+      <img src="media/driver-names/${e[0]}.png">
+      <span>${e[1].toFixed(2)}%</span>
     `;
     towerData.appendChild(row);
   });
 }
 
+
 loadStats();
 setInterval(loadStats, 3000);
+
 
 
 
