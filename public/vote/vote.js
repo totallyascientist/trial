@@ -53,6 +53,35 @@ function renderCountdown() {
 setInterval(renderCountdown, 1000);
 renderCountdown();
 
+const towerCountdownEl = document.getElementById('towerCountdownSimple');
+
+function updateTowerCountdown() {
+  const diff = TOWER_END - new Date();
+  if (diff <= 0) {
+    towerCountdownEl.textContent = 'VOTING CLOSED';
+    return;
+  }
+
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor(diff / 3600000) % 24;
+  const minutes = Math.floor(diff / 60000) % 60;
+  const seconds = Math.floor(diff / 1000) % 60;
+
+  towerCountdownEl.innerHTML = `
+    <div class="countdown-line">
+      <span>${days}</span><span class="label">days</span> :
+      <span>${hours}</span><span class="label">hours</span>
+    </div>
+    <div class="countdown-line">
+      <span>${minutes}</span><span class="label">minutes</span> :
+      <span>${seconds}</span><span class="label">seconds</span>
+    </div>
+  `;
+}
+
+updateTowerCountdown();
+setInterval(updateTowerCountdown, 1000);
+
 /* VOTE */
 document.getElementById('voteBtn').onclick = async () => {
   if (!selected) return;
@@ -68,6 +97,28 @@ document.getElementById('voteBtn').onclick = async () => {
   loadStats();
 };
 
+shareBtn.onclick = async () => {
+  if (!selected) return;
+
+  const imageUrl = `media/completion-photos/${selected}.png`;
+  const blob = await (await fetch(imageUrl)).blob();
+  const file = new File([blob], `${selected}.png`, { type: blob.type });
+
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    await navigator.share({
+      files: [file],
+      text: `I voted for ${selected}! Vote now at totallyascientist.com/vote`,
+      url: 'https://totallyascientist.com/vote'
+    });
+  } else {
+    alert('Sharing images is not supported on this device.');
+  }
+};
+
+function closeOverlay() {
+  document.getElementById('overlay').style.display = 'none';
+}
+
 /* TOWER */
 async function loadStats() {
   const res = await fetch('/stats', { cache: 'no-store' });
@@ -75,33 +126,26 @@ async function loadStats() {
   renderTower(votes);
 }
 
-/* =========================
-   GUARANTEED-MOTION LOG SCALE
-   ========================= */
+/* 🔥 LOG-SCALED RENDER (ONLY IMPORTANT CHANGE) */
 function renderTower(votes) {
   towerData.innerHTML = '';
 
   const entries = Object.entries(votes);
-  entries.sort((a, b) => b[1] - a[1]); // raw vote order
 
-  const ALPHA = 1.15; // perceptual gain (critical)
-  const weights = entries.map(e => Math.pow(Math.log(e[1] + 1), ALPHA));
-  const totalWeight = weights.reduce((a, b) => a + b, 0) || 1;
+  // Log-scale votes
+  const scaled = entries.map(([name, count]) => ({
+    name,
+    raw: count,
+    scaled: Math.log(count + 1) // ln scaling
+  }));
 
-  entries.forEach((e, i) => {
-    const weight = Math.pow(Math.log(e[1] + 1), ALPHA);
-    const percent = (weight / totalWeight) * 100;
+  const totalScaled = scaled.reduce((sum, d) => sum + d.scaled, 0);
 
-    const row = document.createElement('div');
-    row.className = 'towerRow';
-    row.style.top = `${142 + i * 54.6}px`;
-    row.innerHTML = `
-      <img src="media/driver-names/${e[0]}.png">
-      <span>${percent.toFixed(2)}%</span>
-    `;
-    towerData.appendChild(row);
+  // Convert to percentages
+  scaled.forEach(d => {
+    d.percent = totalScaled === 0
+      ? 0
+      : (d.scaled / totalScaled) * 100;
   });
-}
 
-loadStats();
-setInterval(loadStats, 3000);
+  // Sort by displayed p
