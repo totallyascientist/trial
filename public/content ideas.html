@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>totallyascientist</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/main.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* Iframe Section Styling (matches your dark aesthetic) */
+    .form-section {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      background: #000;
+    }
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 1 / 1.25; /* Adjust this to control height */
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 0 20px rgba(255,255,255,0.05);
+    }
+
+    .form-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .form-fallback {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      color: #aaa;
+    }
+
+    .form-fallback a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 20px;
+      background: #fff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.2s ease;
+    }
+
+    .form-fallback a:hover {
+      background: #ddd;
+    }
+
+    /* Mobile Optimization */
+    @media (max-width: 600px) {
+      .form-wrapper {
+        aspect-ratio: 1 / 1.6;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-left">
+    <img src="media/logo.png" alt="Logo" class="logo">
+  </div>
+  
+  <div class="site-title">totallyascientist</div>
+  
+  <div class="header-right">
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/about.html">About</a>
+      <a href="/merch">Merch</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/resources.html">Car mod</a>
+      <a href="/vote/">Vote</a>
+    </nav>
+  </div>
+</header>
+
+<!-- INSERT IFRAME HERE -->
+<section class="form-section">
+  <div class="form-wrapper">
+    <iframe 
+      src="https://docs.google.com/forms/d/e/1FAIpQLSdIsT5rbNLJqsNCyJ8bNOSvu3V6NSxvLoimLyDW-PxtZkoGTA/viewform?embedded=true">
+    </iframe>
+  </div>
+</section>
+
+<div class="form-fallback">
+  <p>Having trouble viewing the form?</p>
+  <a href="https://forms.gle/seHu8Wi9aF45fyrb6" target="_blank">
+    Open Form in New Tab
+  </a>
+</div>
+
+<footer>
+  <img src="media/autograph.png" height="600">
+  <div>
+    <a href="https://instagram.com/totallyascientist">Instagram</a> ·
+    <a href="https://tiktok.com/totallyascientist">TikTok</a> ·
+    <a href="https://linktr.ee/totallyascientist">Linktree</a>
+  </div>
+  <a href="/contact.html">Contact Me</a>
+</footer>
+
+</body>
+</html>
