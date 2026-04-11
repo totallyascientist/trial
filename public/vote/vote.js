@@ -62,7 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCountdown();
   
   const towerCountdownEl = document.getElementById('towerCountdownSimple');
-  
+  function updateTowerCountdown() {
+    if (!towerCountdownEl) return; // ✅ prevent crash
+  }
   function updateTowerCountdown() {
     const now = new Date();
     let diff = TOWER_END - now;
