@@ -1,5 +1,5 @@
-const END = new Date('2025-04-17T23:59:00Z'); 
-const TOWER_END = new Date('2025-04-17T23:59:00Z');
+const END = new Date('2026-04-17T23:59:00Z'); 
+const TOWER_END = new Date('2026-04-17T23:59:00Z');
 
 const drivers = [
   'rose','tzuyu','jay','bang chan','winter','wonhee','minju','lisa',
