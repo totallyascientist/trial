@@ -2,9 +2,9 @@ const END = new Date('2026-04-17T23:59:00Z');
 const TOWER_END = new Date('2026-04-17T23:59:00Z');
 
 const drivers = [
-  'rose','tzuyu','jay','bang chan','winter','chaewon','sullyoon','lisa',
-  'sana','mingyu','mina','nayeon','jungwon','karina','vernon','jihyo',
-  'ning ning','jeongyeon','dino','felix'
+  'rose','tzuyu','jay','bang chan','winter','wonhee','minju','lisa',
+  'sana','mingyu','ian','stella','jungwon','jimin','vernon','V',
+  'ning ning','gaeul','wonyoung','felix'
 ];
 
 let selected = null;
