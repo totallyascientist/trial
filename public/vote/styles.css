@@ -148,6 +148,8 @@ header .site-title {
   position:relative;
   margin:60px auto;
   width:300px;
+  display: none;
+}
 }
 
 #tower {
