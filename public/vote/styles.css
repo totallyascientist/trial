@@ -148,13 +148,14 @@ header .site-title {
   position:relative;
   margin:60px auto;
   width:300px;
+  display:none;
 }
 
 #tower {
   width:100%;
   position:relative;
   z-index:1;
-  display:none;
+  
 }
 
 
