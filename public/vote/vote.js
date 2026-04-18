@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
   towerData.innerHTML = '';
    
   let entries = drivers.map(name => {
-    return [name, votes[drivers] || 0];
+    return [name, votes[name] || 0];
   });
 
   if (!entries.length) return;
