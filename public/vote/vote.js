@@ -166,10 +166,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
  function renderTower(votes) {
   towerData.innerHTML = '';
-
+   
   let entries = drivers.map(name => {
-    const key = `vote_${name}`;
-    return [name, votes[key] || 0];
+    return [name, votes[drivers] || 0];
   });
 
   if (!entries.length) return;
