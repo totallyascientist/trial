@@ -167,7 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
  function renderTower(votes) {
   towerData.innerHTML = '';
 
-  let entries = Object.entries(votes);
+  let entries = drivers.map(name => {
+    return [name, votes[name] || 0];
+  });
 
   if (!entries.length) return;
 
@@ -196,15 +198,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const row = document.createElement('div');
     row.className = 'towerRow';
     row.style.top = `${142 + i * 54.6}px`;
-  
-    const rank = i + 1;
-    const driverName = e[0].toUpperCase(); // match your current style
-  
     row.innerHTML = `
-      <span class="driverText">${rank} ${driverName}</span>
+      <img src="media/driver-names/${e[0]}.png">
       <span>${e[1].toFixed(2)}%</span>
     `;
-  
     towerData.appendChild(row);
   });
 }
