@@ -164,52 +164,45 @@ document.addEventListener('DOMContentLoaded', () => {
     renderTower(votes);
   }
   
-  function renderTower(votes) {
-    towerData.innerHTML = '';
-  
-    let entries = Object.entries(votes);
-  
-    // --- SAFETY: handle empty or invalid data ---
-    if (!entries.length) return;
-  
-    // --- LOG SCALING ---
-    // Step 1: log-scale each vote count
-    const logEntries = entries.map(([name, count]) => {
-      const safeCount = Math.max(0, Number(count) || 0);
-      return [name, Math.log(safeCount + 1)];
-    });
-  
-    // Step 2: sum all log-scaled values
-    const totalLog = logEntries.reduce((sum, [, v]) => sum + v, 0) || 1;
-  
-    // Step 3: convert to percentages
-    let scaled = logEntries.map(([name, logVal]) => {
-      let pct = (logVal / totalLog) * 100;
-  
-      // --- FLOOR VISIBILITY RULE ---
-      // Always show at least 0.01% resolution
-      pct = Math.ceil(pct * 100) / 100;
-  
-      return [name, pct];
-    });
-  
-    // --- SORTING (unchanged behaviour) ---
-    const allZero = scaled.every(e => e[1] === 0);
-    if (allZero) scaled.sort(() => Math.random() - 0.5);
-    else scaled.sort((a, b) => b[1] - a[1]);
-  
-    // --- RENDER ---
-    scaled.forEach((e, i) => {
-      const row = document.createElement('div');
-      row.className = 'towerRow';
-      row.style.top = `${142 + i * 54.6}px`;
-      row.innerHTML = `
-        <img src="media/driver-names/${e[0]}.png">
-        <span>${e[1].toFixed(2)}%</span>
-      `;
-      towerData.appendChild(row);
-    });
-  }
+ function renderTower(votes) {
+  towerData.innerHTML = '';
+
+  let entries = Object.entries(votes);
+
+  if (!entries.length) return;
+
+  // --- NORMAL SCALING (no log) ---
+  const totalVotes = entries.reduce((sum, [, count]) => {
+    return sum + (Number(count) || 0);
+  }, 0);
+
+  let scaled = entries.map(([name, count]) => {
+    const safeCount = Number(count) || 0;
+    let pct = totalVotes > 0 ? (safeCount / totalVotes) * 100 : 0;
+
+    // round to 2 decimal places
+    pct = Math.round(pct * 100) / 100;
+
+    return [name, pct];
+  });
+
+  // sorting (same behavior)
+  const allZero = scaled.every(e => e[1] === 0);
+  if (allZero) scaled.sort(() => Math.random() - 0.5);
+  else scaled.sort((a, b) => b[1] - a[1]);
+
+  // render
+  scaled.forEach((e, i) => {
+    const row = document.createElement('div');
+    row.className = 'towerRow';
+    row.style.top = `${142 + i * 54.6}px`;
+    row.innerHTML = `
+      <img src="media/driver-names/${e[0]}.png">
+      <span>${e[1].toFixed(2)}%</span>
+    `;
+    towerData.appendChild(row);
+  });
+}
   
   loadStats();
   setInterval(loadStats, 3000);
