@@ -160,9 +160,28 @@ document.addEventListener('DOMContentLoaded', () => {
   /* TOWER */
   async function loadStats() {
     const res = await fetch('/stats', { cache: 'no-store' });
-    const votes = await res.json();
-    renderTower(votes);
-  }
+    let votes = await res.json();
+  
+    const missingDrivers = [
+      'wonhee','minju','ian','stella','jimin','V','gaeul','wonyoung'
+    ];
+  
+    // brute-force fetch missing keys
+    await Promise.all(
+      missingDrivers.map(async (name) => {
+        const key = `vote_${name}`;
+        try {
+          const r = await fetch(`/getVote?key=${encodeURIComponent(key)}`);
+          const v = await r.text();
+          votes[key] = Number(v) || 0;
+        } catch (e) {
+          console.error('Failed to fetch', key);
+        }
+      })
+  );
+
+  renderTower(votes);
+}
   
  function renderTower(votes) {
   towerData.innerHTML = '';
