@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     row.className = 'towerRow';
     row.style.top = `${142 + i * 54.6}px`;
     row.innerHTML = `
-      <img src="media/driver-names/${e[0]}.png">
+      <img src="media/driver-names/${name}.png">
       <span>${e[1].toFixed(2)}%</span>
     `;
     towerData.appendChild(row);
