@@ -154,7 +154,7 @@ header .site-title {
   width:100%;
   position:relative;
   z-index:1;
-  
+  display:none;
 }
 
 
