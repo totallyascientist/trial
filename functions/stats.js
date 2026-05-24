@@ -1,8 +1,8 @@
 const DRIVERS = [
-  'rose','tzuyu','jay','bang chan','winter','chaewon','sullyoon','lisa',
-  'sana','mingyu','mina','nayeon','jungwon','karina','vernon','jihyo',
-  'ning ning','jeongyeon','dino','felix'
-];
+    'rose','tzuyu','jay','bang chan','winter','wonhee','minju','lisa',
+    'sana','mingyu','ian','stella','jungwon','jimin','vernon','V',
+    'ning ning','gaeul','wonyoung','felix'
+  ];
 
 export async function onRequestGet({ env }) {
   if (!env.VOTES) {
