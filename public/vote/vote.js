@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  
-
   const END = new Date('2026-06-07T15:59:00Z'); 
   const TOWER_END = new Date('2026-06-07T15:59:00Z');
   
@@ -63,9 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const towerCountdownEl = document.getElementById('towerCountdownSimple');
   function updateTowerCountdown() {
-    if (!towerCountdownEl) return; // ✅ prevent crash
-  }
-  function updateTowerCountdown() {
+    if (!towerCountdownEl) return;
     const now = new Date();
     let diff = TOWER_END - now;
   
@@ -88,20 +84,32 @@ document.addEventListener('DOMContentLoaded', () => {
         <span>${minutes}</span><span class="label">minutes</span> :
         <span>${seconds}</span><span class="label">seconds</span>
       </div>
-  `;
-  
+    `;
   }
   
   updateTowerCountdown();
   setInterval(updateTowerCountdown, 1000);
-  
-  
+
+
+  /* GREY BACKDROP — 40% opacity, sits below the completion image, closes overlay on tap */
+  const overlayBackdrop = document.createElement('div');
+  overlayBackdrop.id = 'overlayBackdrop';
+  overlayBackdrop.style.cssText = `
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99;
+    display: none;
+  `;
+  overlayBackdrop.onclick = () => closeOverlay();
+  document.body.appendChild(overlayBackdrop);
+
   
   /* VOTE */
   const voteBtn = document.getElementById('voteBtn');
 
   voteBtn.onclick = async () => {
-    console.log('CLICKED'); // 👈 DEBUG
+    console.log('CLICKED');
   
     if (!selected) {
       console.log('No selection');
@@ -119,7 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
       document.getElementById('overlayImg').src =
         `media/completion-photos/${selected}.png`;
-  
+
+      // Hide vote button to prevent repeat votes
+      voteBtn.style.display = 'none';
+
+      // Show backdrop then overlay
+      overlayBackdrop.style.display = 'block';
       document.getElementById('overlay').style.display = 'flex';
   
       loadStats();
@@ -128,9 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Vote error:', err);
     }
   };
-  
+
+  /* SHARE — stopPropagation so tapping share doesn't bubble to backdrop and close the overlay */
   if (shareBtn) {
-    shareBtn.onclick = async () => {
+    shareBtn.onclick = async (e) => {
+      e.stopPropagation();
       if (!selected) return;
   
       const imageUrl = `media/completion-photos/${selected}.png`;
@@ -149,12 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Sharing images is not supported on this device.');
       }
     };
-  };
-  
-  
+  }
   
   function closeOverlay() {
     document.getElementById('overlay').style.display = 'none';
+    overlayBackdrop.style.display = 'none';
   }
   
   /* TOWER */
@@ -166,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
       'wonhee','minju','ian','stella','jimin','V','gaeul','wonyoung'
     ];
   
-    // brute-force fetch missing keys
     await Promise.all(
       missingDrivers.map(async (name) => {
         const key = `vote_${name}`;
@@ -178,55 +191,47 @@ document.addEventListener('DOMContentLoaded', () => {
           console.error('Failed to fetch', key);
         }
       })
-  );
+    );
 
-  renderTower(votes);
-}
+    renderTower(votes);
+  }
   
- function renderTower(votes) {
-  towerData.innerHTML = '';
+  function renderTower(votes) {
+    towerData.innerHTML = '';
    
-  let entries = drivers.map(name => {
-    return [name, votes[name] || 0];
-  });
+    let entries = drivers.map(name => {
+      return [name, votes[name] || 0];
+    });
 
-  if (!entries.length) return;
+    if (!entries.length) return;
 
-  // --- NORMAL SCALING (no log) ---
-  const totalVotes = entries.reduce((sum, [, count]) => {
-    return sum + (Number(count) || 0);
-  }, 0);
+    const totalVotes = entries.reduce((sum, [, count]) => {
+      return sum + (Number(count) || 0);
+    }, 0);
 
-  let scaled = entries.map(([name, count]) => {
-    const safeCount = Number(count) || 0;
-    let pct = totalVotes > 0 ? (safeCount / totalVotes) * 100 : 0;
+    let scaled = entries.map(([name, count]) => {
+      const safeCount = Number(count) || 0;
+      let pct = totalVotes > 0 ? (safeCount / totalVotes) * 100 : 0;
+      pct = Math.round(pct * 100) / 100;
+      return [name, pct];
+    });
 
-    // round to 2 decimal places
-    pct = Math.round(pct * 100) / 100;
+    const allZero = scaled.every(e => e[1] === 0);
+    if (allZero) scaled.sort(() => Math.random() - 0.5);
+    else scaled.sort((a, b) => b[1] - a[1]);
 
-    return [name, pct];
-  });
-
-  // sorting (same behavior)
-  const allZero = scaled.every(e => e[1] === 0);
-  if (allZero) scaled.sort(() => Math.random() - 0.5);
-  else scaled.sort((a, b) => b[1] - a[1]);
-
-    // render
-  scaled.forEach((e, i) => {
-    const row = document.createElement('div');
-    row.className = 'towerRow';
-    row.style.top = `${142 + i * 54.6}px`;
-    row.innerHTML = `
-      <img src="media/driver-names/${e[0]}.png">
-      <span>${e[1].toFixed(2)}%</span>
-    `;
-    towerData.appendChild(row);
-  });
-}
+    scaled.forEach((e, i) => {
+      const row = document.createElement('div');
+      row.className = 'towerRow';
+      row.style.top = `${142 + i * 54.6}px`;
+      row.innerHTML = `
+        <img src="media/driver-names/${e[0]}.png">
+        <span>${e[1].toFixed(2)}%</span>
+      `;
+      towerData.appendChild(row);
+    });
+  }
   
   loadStats();
   setInterval(loadStats, 3000);
 });
-
-
