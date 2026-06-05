@@ -2,14 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
 
-  const END = new Date('2026-05-31T15:59:00Z'); 
-  const TOWER_END = new Date('2026-05-31T15:59:00Z');
+  const END = new Date('2026-06-07T15:59:00Z'); 
+  const TOWER_END = new Date('2026-06-07T15:59:00Z');
   
   const shareBtn = document.getElementById('shareBtn');
   
   const drivers = [
     'rose','tzuyu','jay','bang chan','winter','wonhee','minju','lisa',
-    'sana','mingyu','ian','stella','jungwon','jimin','vernon','V',
+    'sana','ahyeon','ian','stella','jungwon','jimin','ruka','V',
     'ning ning','gaeul','wonyoung','felix'
   ];
   
