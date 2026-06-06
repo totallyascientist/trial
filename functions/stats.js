@@ -1,6 +1,6 @@
 const DRIVERS = [
     'rose','tzuyu','jay','bang chan','winter','wonhee','minju','lisa',
-    'sana','mingyu','ian','stella','jungwon','jimin','vernon','V',
+    'sana','ahyeon','ian','stella','jungwon','jimin','ruka','V',
     'ning ning','gaeul','wonyoung','felix'
   ];
 
