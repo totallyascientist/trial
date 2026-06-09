@@ -1,7 +1,7 @@
 const DRIVERS = [
-    'rose','tzuyu','jay','bang chan','winter','wonhee','minju','lisa',
-    'sana','ahyeon','ian','stella','jungwon','jimin','ruka','V',
-    'ning ning','gaeul','wonyoung','felix'
+    'jay','jungwon','tzuyu','sana','winter','ning ning','V','jimin',
+    'rose','lisa','ian','stella','ahyeon','ruka','sullyoon','jiwoo',
+    'minju','wonhee','wonyoung','gaeul'
   ];
 
 export async function onRequestGet({ env }) {
