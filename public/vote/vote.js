@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const END = new Date('2026-06-14T15:59:00Z'); 
-  const TOWER_END = new Date('2026-06-14T15:59:00Z');
+  const END = new Date('2026-06-21T15:59:00Z'); 
+  const TOWER_END = new Date('2026-06-21T15:59:00Z');
   
   const shareBtn = document.getElementById('shareBtn');
   
