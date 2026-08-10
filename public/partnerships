@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>totallyascientist — Media Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --track-night:#10182B;
+    --track-night-2:#161f38;
+    --flag-red:#E8352B;
+    --pit-amber:#FFB400;
+    --holo-lilac:#C9A8FF;
+    --paper:#000000;
+    --paper-2:#FFFFFF;
+    --graphite:#77809A;
+    --ink:#14161C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  a:focus-visible,button:focus-visible{
+    outline:2px solid var(--flag-red);
+    outline-offset:3px;
+  }
+  .mono{font-family:'Space Mono',monospace;}
+  .display{font-family:'Big Shoulders Display',sans-serif;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:radial-gradient(circle at 15% -10%, var(--track-night-2), var(--track-night) 55%);
+    color:var(--paper);
+    padding:2.6rem 6vw 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:auto 0 0 0;
+    height:1px;
+    background:repeating-linear-gradient(90deg, rgba(243,241,236,.18) 0 14px, transparent 14px 28px);
+  }
+  .eyebrow-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:.7rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--graphite);
+    flex-wrap:wrap;
+    gap:.5rem;
+    padding-bottom:1.4rem;
+  }
+  .eyebrow-row .tag{
+    border:1px solid rgba(243,241,236,.25);
+    padding:.25em .7em;
+    border-radius:2px;
+    color:var(--paper);
+  }
+  .plate{
+    display:flex;
+    align-items:flex-end;
+    gap:.9rem;
+    flex-wrap:wrap;
+  }
+  .plate-number{
+    font-family:'Space Mono',monospace;
+    font-size:clamp(1rem,2vw,1.3rem);
+    color:var(--pit-amber);
+    border:2px solid var(--pit-amber);
+    padding:.2em .5em;
+    border-radius:3px;
+    line-height:1;
+  }
+  h1.title{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:900;
+    font-size:clamp(2.6rem,9vw,5.6rem);
+    line-height:.88;
+    letter-spacing:-.01em;
+    margin:.15em 0 .2em;
+    text-transform:uppercase;
+  }
+  h1.title .accent{color:var(--flag-red);}
+  .subtitle{
+    font-family:'Space Mono',monospace;
+    font-size:clamp(.72rem,1.6vw,.95rem);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--holo-lilac);
+    margin:0 0 2rem;
+  }
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(243,241,236,.2);
+  }
+  .stat{
+    padding:1.1rem 1rem 1.4rem;
+    border-right:1px solid rgba(243,241,236,.2);
+  }
+  .stat:last-child{border-right:none;}
+  .stat .num{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:clamp(1.3rem,3.2vw,2.1rem);
+    color:var(--paper);
+    display:block;
+  }
+  .stat .label{
+    font-size:.62rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--graphite);
+    display:block;
+    margin-top:.35rem;
+  }
+  .holo-bar{
+    height:5px;
+    width:100%;
+    background:linear-gradient(90deg,var(--flag-red),var(--pit-amber),var(--holo-lilac),var(--flag-red));
+    background-size:300% 100%;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .holo-bar{ animation:shimmer 9s linear infinite; }
+  }
+  @keyframes shimmer{
+    0%{background-position:0% 0;}
+    100%{background-position:300% 0;}
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{
+    padding:3.4rem 6vw;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .kicker{
+    font-family:'Space Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--flag-red);
+    margin:0 0 .6rem;
+  }
+  h2{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:clamp(1.5rem,3.4vw,2.2rem);
+    margin:0 0 1.1rem;
+    letter-spacing:-.01em;
+  }
+  .lede{
+    font-size:1.02rem;
+    line-height:1.65;
+    color:#2b2e38;
+    max-width:60ch;
+  }
+  .lede b{color:var(--ink);}
+
+  /* Track record / laps */
+  .laps{
+    margin-top:2rem;
+    border-top:1px solid var(--paper-2);
+  }
+  .lap{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:1.2rem;
+    padding:1.2rem 0;
+    border-bottom:1px solid var(--paper-2);
+    align-items:baseline;
+  }
+  .lap-mark{
+    font-family:'Space Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    color:var(--flag-red);
+    text-transform:uppercase;
+  }
+  .lap-body h3{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    font-size:1.02rem;
+    margin:0 0 .3rem;
+  }
+  .lap-body p{
+    margin:0;
+    color:#4a4e5a;
+    font-size:.92rem;
+    line-height:1.55;
+  }
+
+  /* Proof grid */
+  .proof-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1rem;
+    margin-top:1.8rem;
+  }
+  .proof-card{
+    aspect-ratio:4/5;
+    border:1.5px dashed #B9B2A2;
+    border-radius:10px;
+    background:
+      repeating-linear-gradient(135deg, rgba(0,0,0,.02) 0 10px, transparent 10px 20px),
+      var(--paper-2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:1rem;
+    position:relative;
+  }
+  .proof-card span{
+    font-family:'Space Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.04em;
+    color:var(--graphite);
+    line-height:1.5;
+  }
+  .proof-card .corner{
+    position:absolute;
+    top:.6rem; left:.6rem;
+    font-family:'Space Mono',monospace;
+    font-size:.62rem;
+    color:var(--holo-lilac);
+    letter-spacing:.06em;
+  }
+  .proof-note{
+    margin-top:1rem;
+    font-size:.85rem;
+    color:var(--graphite);
+  }
+
+  /* Ask panel */
+  .ask-panel{
+    background:var(--track-night);
+    color:var(--paper);
+    border-radius:14px;
+    padding:2.4rem clamp(1.4rem,4vw,3rem);
+    margin-top:1.8rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .ask-panel .kicker{color:var(--pit-amber);}
+  .ask-panel h2{color:var(--paper);}
+  .ask-panel .lede{color:#C7CAD6;}
+  .ask-figure{
+    font-family:'Space Mono',monospace;
+    font-weight:700;
+    font-size:clamp(2rem,5vw,3rem);
+    color:var(--pit-amber);
+    margin:1.1rem 0 .3rem;
+  }
+  .ask-figure sup{
+    font-size:.4em;
+    color:var(--graphite);
+    margin-left:.5em;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+
+  /* Tiers */
+  .tiers{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1rem;
+    margin-top:2rem;
+  }
+  .tier-card{
+    border:1.5px solid var(--paper-2);
+    border-top:4px solid var(--flag-red);
+    border-radius:8px;
+    padding:1.2rem 1rem;
+    background:#fff;
+  }
+  .tier-card.core{border-top-color:var(--pit-amber);}
+  .tier-card.support{border-top-color:var(--holo-lilac);}
+  .tier-card.gear{border-top-color:var(--graphite);}
+  .tier-card .tname{
+    font-family:'Space Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--graphite);
+  }
+  .tier-card .tamount{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;
+    font-size:1.5rem;
+    margin:.25rem 0 .6rem;
+  }
+  .tier-card ul{
+    margin:0;
+    padding-left:1.1rem;
+    font-size:.82rem;
+    color:#3c3f49;
+    line-height:1.6;
+  }
+
+  /* Checklist */
+  .checklist{
+    list-style:none;
+    margin:1.6rem 0 0;
+    padding:0;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:.9rem 2rem;
+  }
+  .checklist li{
+    display:flex;
+    gap:.7rem;
+    align-items:flex-start;
+    font-size:.94rem;
+    line-height:1.5;
+  }
+  .checklist svg{flex:0 0 auto;margin-top:.15rem;}
+
+  /* Footer */
+  footer{
+    background:var(--track-night);
+    color:var(--paper);
+    padding:3rem 6vw 2.4rem;
+    margin-top:1rem;
+  }
+  .foot-grid{
+    max-width:1080px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:1.6rem;
+  }
+  footer h2{color:var(--paper);}
+  .foot-links{
+    font-family:'Space Mono',monospace;
+    font-size:.85rem;
+    display:flex;
+    flex-direction:column;
+    gap:.5rem;
+  }
+  .foot-links a{
+    text-decoration:none;
+    border-bottom:1px solid rgba(243,241,236,.35);
+    padding-bottom:2px;
+    width:fit-content;
+  }
+  .fineprint{
+    max-width:1080px;
+    margin:2rem auto 0;
+    font-size:.72rem;
+    color:var(--graphite);
+    border-top:1px solid rgba(243,241,236,.15);
+    padding-top:1.2rem;
+  }
+
+  @media (max-width:760px){
+    .stat-row{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(2){border-right:none;}
+    .lap{grid-template-columns:1fr;gap:.3rem;}
+    .proof-grid{grid-template-columns:repeat(2,1fr);}
+    .tiers{grid-template-columns:1fr 1fr;}
+    .checklist{grid-template-columns:1fr;}
+    section{padding:2.6rem 6vw;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="eyebrow-row">
+      <span>Media Kit</span>
+      <span class="tag">Open for collabs</span>
+    </div>
+    <div class="plate">
+      <span class="plate-number">SG · 17</span>
+    </div>
+    <h1 class="title">totallyascientist</h1>
+    <p class="subtitle">Singapore based F1 × K-Pop Content Creator and Racer</p>
+
+    <div class="stat-row">
+      <div class="stat"><span class="num mono">33,000</span><span class="label">Followers</span></div>
+      <div class="stat"><span class="num mono">1M+</span><span class="label">Monthly Reach</span></div>
+      <div class="stat"><span class="num mono">Global</span><span class="label">Audience</span></div>
+    </div>
+  </div>
+  <div class="holo-bar"></div>
+
+  <section>
+    <p class="kicker">The short version</p>
+    <h2>Two fandoms, one feed</h2>
+    <p class="lede">I make <b>faceless, fan-first content</b> at the exact intersection of Formula 1 and K-pop — the same crossover F1's own marketing is currently chasing with drops like Gentle Monster × Leclerc and Verdy × Tsunoda. I've been building that audience organically for years, with an international, evenly gender-split following that skews younger and more female than the average motorsport account. Off-camera, I actually race: ROTAX karts, with podium finishes and wins in Singapore's SWS series.</p>
+  </section>
+
+  <section style="padding-top:0;">
+    <p class="kicker">Track record</p>
+    <h2>From karts to my first single-seater</h2>
+    <div class="laps">
+      <div class="lap">
+        <div class="lap-mark">Lap 01</div>
+        <div class="lap-body">
+          <h3>ROTAX Kart Racing</h3>
+          <p>Competitive karting background — the foundation of everything I create content about.</p>
+        </div>
+      </div>
+      <div class="lap">
+        <div class="lap-mark">Lap 02</div>
+        <div class="lap-body">
+          <h3>SWS Series — Podiums &amp; Wins</h3>
+          <p>Competed and placed on the podium in Singapore's SWS karting series, including race wins.</p>
+        </div>
+      </div>
+      <div class="lap">
+        <div class="lap-mark">Lap 03</div>
+        <div class="lap-body">
+          <h3>Formula 4, Japan — [Month Year]</h3>
+          <p>My first time in a single-seater: an arrive-and-drive F4 day, fully documented for my audience — this is what I'm building partnerships around.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <p class="kicker">Proof, not promises</p>
+    <h2>Recent post performance</h2>
+    <div class="proof-grid">
+      <div class="proof-card"><span class="corner">01</span><span>Swap in a screenshot of<br>your top-performing post<br>+ its like/comment count</span></div>
+      <div class="proof-card"><span class="corner">02</span><span>Swap in a screenshot of<br>your best F1 × K-pop<br>crossover post</span></div>
+      <div class="proof-card"><span class="corner">03</span><span>Swap in a screenshot of<br>your Instagram Insights<br>reach/audience panel</span></div>
+    </div>
+    <p class="proof-note">Replace each dashed card above with a real screenshot before sending — actual numbers convert far better than claimed ones.</p>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="ask-panel">
+      <p class="kicker">What I'm raising for</p>
+      <h2>Formula 4 Rental Day — Japan</h2>
+      <p class="lede">A one-off, fully-produced trip: my first time in a single-seater, documented start to finish for an audience that doesn't usually get this kind of access. Total budget covers the car rental, consumables, and race gear.</p>
+      <p class="ask-figure">S$5,000<sup>Total budget</sup></p>
+      <p class="lede" style="margin-top:.4rem;">Open to cash, product, or a discounted-rate trade — whatever makes sense on your end.</p>
+    </div>
+
+    <div class="tiers">
+      <div class="tier-card">
+        <div class="tname">Title</div>
+        <div class="tamount">S$1,500–2,000</div>
+        <ul>
+          <li>Logo on overalls + helmet</li>
+          <li>Dedicated pre/post-trip Reel</li>
+          <li>Named in every piece of content</li>
+        </ul>
+      </div>
+      <div class="tier-card core">
+        <div class="tname">Core</div>
+        <div class="tamount">S$500–1,000</div>
+        <ul>
+          <li>Logo on overalls</li>
+          <li>Mention in main video</li>
+          <li>Tagged in posts</li>
+        </ul>
+      </div>
+      <div class="tier-card support">
+        <div class="tname">Supporting</div>
+        <div class="tamount">S$100–300</div>
+        <ul>
+          <li>Tagged in one post</li>
+          <li>Thank-you shoutout</li>
+        </ul>
+      </div>
+      <div class="tier-card gear">
+        <div class="tname">Gear / Trade</div>
+        <div class="tamount">Product</div>
+        <ul>
+          <li>Worn/used on camera</li>
+          <li>Reviewed if relevant</li>
+          <li>Tagged throughout</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <h2>What partners get</h2>
+    <ul class="checklist">
+      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#E8352B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Reach into a 50/50, international audience most motorsport accounts don't have</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#E8352B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Content tied to a genuine, filmable milestone — first single-seater drive</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#E8352B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>A creator with real racing credibility, not just a fan account</li>
+      <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L6 12.5L14 3.5" stroke="#E8352B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Flexible packages — cash, product, or trade all welcome</li>
+    </ul>
+  </section>
+
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <h2 style="margin-bottom:.4rem;">Let's talk partnership.</h2>
+        <p class="lede" style="color:#C7CAD6;">Drop me an email or DM me on Instagram — happy to send more detail or hop on a quick call.</p>
+      </div>
+      <div class="foot-links">
+        <a href="mailto:youremail@example.com">youremail@example.com</a>
+        <a href="https://instagram.com/totallyascientist" target="_blank" rel="noopener">@totallyascientist</a>
+      </div>
+    </div>
+    <p class="fineprint">This is a media kit shared for partnership discussion purposes — not a binding offer or agreement. Figures current as of August 2026.</p>
+  </footer>
+
+</body>
+</html>
