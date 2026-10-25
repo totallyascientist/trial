@@ -196,6 +196,8 @@ export default function About() {
 
       <section className="capabilities-section section">
         <SectionIntro
+          number = ""
+          label = ""
           title={
             <>
               <h2><em>OUR DNA</em></h2>
@@ -218,6 +220,8 @@ export default function About() {
       <section className="selected-work-section section-light" id="selected-work">
         <div className="section-heading-row">
           <SectionIntro
+            number = ""
+            label = ""
             title={
               <>
                 THE WORK, IN
