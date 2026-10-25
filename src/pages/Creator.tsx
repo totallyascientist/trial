@@ -155,9 +155,9 @@ export default function Creator() {
         </div>
 
         <div className="creator-gallery-grid">
-          {racingGallery.map((image, index) => (
+          {racingGallery.map((image) => (
             <figure className="creator-gallery-card" key={image.src}>
-              <img src={image.src} alt={image.alt} loading="lazy" />
+              <img src={image.src} alt={image} loading="lazy" />
             </figure>
           ))}
         </div>
