@@ -10,6 +10,43 @@
 <body>
 
 
+<header class="site-header">
+  <a href="/" class="site-logo" aria-label="T.A.S. Home">
+    T.A.S.<span class="logo-period">.</span>
+  </a>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="/#crossover">THE CROSSOVER</a>
+    <a href="/about#selected-work">SELECTED WORK</a>
+    <a href="/vote" aria-current="page">VOTE</a>
+    <a href="/creator">CREATOR</a>
+  </nav>
+
+  <a href="/partnerships" class="header-cta">
+    LET'S CONNECT <span aria-hidden="true">↗</span>
+  </a>
+
+  <button
+    class="mobile-menu-toggle"
+    type="button"
+    aria-label="Open navigation"
+    aria-expanded="false"
+    aria-controls="mobile-nav"
+    onclick="const nav = document.getElementById('mobile-nav'); const isOpen = this.getAttribute('aria-expanded') === 'true'; this.setAttribute('aria-expanded', String(!isOpen)); nav.hidden = isOpen;"
+  >
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden>
+    <a href="/#crossover">THE CROSSOVER</a>
+    <a href="/about#selected-work">SELECTED WORK</a>
+    <a href="/vote" aria-current="page">VOTE</a>
+    <a href="/creator">CREATOR</a>
+    <a href="/partnerships">LET'S CONNECT ↗</a>
+  </nav>
+</header>
+
 <div class="vote-intro">
   <h2>Idol of the week</h2>
   <p>
@@ -45,19 +82,55 @@
 <script src="vote.js"></script>
 
 
-<footer>
-  <img src="media/autograph.png" alt="Autograph" class="autograph">
-  
-  <div class="footer-socials">
-    <a href="https://instagram.com/totallyascientist" target="_blank">Instagram</a>
-    <a href="https://tiktok.com/@totallyascientist" target="_blank">TikTok</a>
-    <a href="https://linktr.ee/totallyascientist" target="_blank">Linktree</a>
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <a href="/" class="footer-logo" aria-label="T.A.S. Home">
+      T.A.S<span class="logo-period">.</span>
+    </a>
+
+    <p class="footer-tagline">
+      TWO WORLDS. ONE COMMUNITY.
+      <br />
+      K-POP × MOTORSPORT.
+    </p>
+
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="/">HOME</a>
+      <a href="/about">ABOUT</a>
+      <a href="/vote">VOTE</a>
+      <a href="/partnerships">PARTNERSHIPS</a>
+    </nav>
+
+    <div class="footer-socials">
+      <a
+        href="https://www.instagram.com/totallyascientist/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        INSTAGRAM ↗
+      </a>
+      <a
+        href="https://www.tiktok.com/@totallyascientist"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        TIKTOK ↗
+      </a>
+    </div>
   </div>
-  
-  <div class="footer-contact">
-    <a href="/contact.html">Contact Me</a>
+
+  <div class="footer-bottom">
+    <span>© <span id="footer-year"></span> T.A.S. / TOTALLYASCIENTIST</span>
+    <a href="#top">BACK TO TOP ↑</a>
   </div>
 </footer>
+
+<script>
+  document.getElementById('footer-year').textContent =
+    new Date().getFullYear();
+</script>
+
 
 </body>
 </html>
