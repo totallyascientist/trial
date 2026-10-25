@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ArrowDownRight, ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight, Menu, X } from 'lucide-react';
 import { site } from '../data/site';
 
 function BrandLogo({ onClick }: { onClick?: () => void }) {
