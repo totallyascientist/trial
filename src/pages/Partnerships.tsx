@@ -10,32 +10,32 @@ const offerings = [
     number: '01',
     title: 'Content collaborations',
     detail: 'Short-form video · Social-first storytelling · Crossover concepts',
-    copy: 'Native-feeling content that connects the references, personalities and audiences of K-pop and motorsport.',
+    copy: 'Native-feeling content to connect your target audience.',
   },
   {
     number: '02',
     title: 'Event coverage',
     detail: 'Event anticipation · Approved on-site coverage · Recaps',
-    copy: 'Story-led event content, subject to confirmed access, permissions, schedule and agreed scope.',
+    copy: 'Story-led event content.',
   },
   {
     number: '03',
     title: 'Crossover concepts',
     detail: 'Creative ideation · Campaign angles · Audience bridges',
-    copy: 'Original concepts that help a campaign travel between culture communities without forcing the connection.',
+    copy: 'Writing stories with unique content to connect with audiences',
   },
   {
     number: '04',
     title: 'Community activations',
     detail: 'Polls · Fan participation · Engagement ideas',
-    copy: 'Fan-aware mechanics and participation formats designed to invite a community into the story.',
+    copy: 'Making the fans engaged',
   },
   {
     number: '05',
     title: 'Racing sponsorships',
     detail: 'Karting · Track experience · Equipment and travel support',
     copy:
-      'Support genuine racing development through financial sponsorship, equipment, travel or in-kind support. Proposed benefits and deliverables are discussed transparently and agreed before any commitment.',
+      'Support genuine racing development through financial sponsorship, equipment, travel or in-kind support',
   },
 ];
 
