@@ -125,8 +125,7 @@ export default function About() {
             </h2>
             <p>
               A personal visual archive from the Williams Fan Zone event and its K-pop ×
-              motorsport crossover. These images document event context; they do not
-              imply a paid endorsement or an official commercial partnership with me.
+              motorsport crossover. 
             </p>
           </div>
         </div>
@@ -233,10 +232,6 @@ export default function About() {
             light
           />
           <div className="work-side">
-            <p>
-              Covers use the supplied channel artwork. Add the corresponding public post
-              URL in `src/data/site.ts` to make a card clickable.
-            </p>
             <span className="status-label">
             </span>
           </div>
