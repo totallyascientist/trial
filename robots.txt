@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://totallyascientist.com/sitemap.xml
