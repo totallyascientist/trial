@@ -1,6 +1,6 @@
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Check, Send } from 'lucide-react';
+import { ArrowRight, ArrowUpRight} from 'lucide-react';
 import { AnimatedNumber } from '../components/AnimatedNumber';
 import { Eyebrow } from '../components/Shared';
 import { ScrollReveal } from '../components/ScrollReveal';
@@ -98,12 +98,6 @@ const initialForm: EnquiryForm = {
 type FormStatus = 'idle' | 'sending' | 'success' | 'error' | 'fallback';
 
 export default function Partnerships() {
-  const [form, setForm] = useState<EnquiryForm>(initialForm);
-  const [status, setStatus] = useState<FormStatus>('idle');
-
-  function updateForm(field: keyof EnquiryForm, value: string) {
-    setForm((current) => ({ ...current, [field]: value }));
-  }
 
 
   return (
@@ -188,7 +182,7 @@ export default function Partnerships() {
           </div>
           <div>
             <span>Posts till date</span>
-            <AnimatedNumber value={metrics.posts}/>
+            <AnimatedNumber value={metrics.posts} label={`${metrics.posts.toLocaleString('en-SG')} posts`}/>
             <small>Experience</small>
           </div>
         </div>
