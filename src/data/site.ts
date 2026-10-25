@@ -241,7 +241,7 @@ export const campaignHighlights: GalleryImage[] = [
   {
     src: '/assets/media/williams-tzuyu-press-conference.webp',
     alt: 'Tzuyu and guests during the event press conference',
-    caption: 'On-stage conversation',
+    caption: 'On stage conversation',
     category: 'Event',
   },
   {
@@ -274,21 +274,21 @@ export const capabilities = [
   {
     number: '01',
     title: 'Crossover storytelling',
-    text: 'Creative concepts that translate the references, rituals and energy of K-pop and motorsport for fans of both.',
+    text: 'Creative concepts that captures the target audience.',
   },
   {
     number: '02',
-    title: 'Social-first content',
-    text: 'Short-form ideas shaped around strong hooks, platform-native pacing and audience understanding.',
+    title: 'Social first content',
+    text: 'Short-form ideas shaped around strong hooks, platform-native pacing and audience engagement.',
   },
   {
     number: '03',
     title: 'Community insight',
-    text: 'A fan-led perspective on what makes a crossover feel natural, specific and worth sharing.',
+    text: 'A fan led perspective on what makes content feel natural, specific and worth sharing.',
   },
   {
     number: '04',
-    title: 'Event-led storytelling',
-    text: 'On-site or remote coverage concepts, subject to confirmed access, permissions and agreed scope.',
+    title: 'Event led storytelling',
+    text: 'On-site or remote coverage concepts',
   },
 ];
