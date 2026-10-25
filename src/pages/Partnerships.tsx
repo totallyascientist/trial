@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight} from 'lucide-react';
 import { AnimatedNumber } from '../components/AnimatedNumber';
@@ -75,27 +74,7 @@ const collaborators = [
   },
 ];
 
-type EnquiryForm = {
-  name: string;
-  organisation: string;
-  email: string;
-  type: string;
-  brief: string;
-  timeline: string;
-  budget: string;
-};
 
-const initialForm: EnquiryForm = {
-  name: '',
-  organisation: '',
-  email: '',
-  type: 'Content collaboration',
-  brief: '',
-  timeline: '',
-  budget: '',
-};
-
-type FormStatus = 'idle' | 'sending' | 'success' | 'error' | 'fallback';
 
 export default function Partnerships() {
 
